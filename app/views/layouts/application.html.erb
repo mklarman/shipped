@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shipped</title>
+    <title>BadBoats.io</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,35 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="nav">
+      <a href="/">
+        <div class="nav__dashboard">
+          Dashboard
+        </div>
+      </a>
+
+      <a href="/jobs/">
+        <div class="nav__jobs">
+          All jobs
+        </div>
+      </a>
+
+      <a href="/sessions/edit">
+        <div class="nav__edit">
+          Account
+        </div>
+      </a>
+
+      <form action='/logging_out' method='post' class="nav__form_logout">
+        <input type="submit" value="Logout">
+      </form>
+
+    </div>
+
+    <div class="main">
+      <%= yield %>
+    </div>
+
   </body>
 </html>
