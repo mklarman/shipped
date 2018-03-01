@@ -1,0 +1,12 @@
+<div id='availJobs'>
+  <h2>List Of Available Jobs</h2>
+</div>
+
+<% @jobs.each do |eJob| %>
+ <div id='jobsList'>
+ 	<a href="/jobs/<%= eJob.id %>">
+       <%= eJob.id %>
+       <%= eJob.description %>
+    </a>
+ </div>
+<% end %>
