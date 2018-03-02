@@ -10,3 +10,16 @@
      </a>
   </div>
 <% end %>
+
+<div id='formForJobs'>
+  <%= form_for @job do |fill| %>
+
+    Job Description:<%= fill.text_field :description %><br>
+    Starting From:<%= fill.text_field :origin %><br>
+    Destination:<%= fill.text_field :destination %><br>
+    Cost:<%= fill.text_field :username :step => "0.01" %><br>
+    Containers:<%= fill.number_field :containers %><br>
+    <%= f.submit %>
+  <% end %>
+</div>
+
