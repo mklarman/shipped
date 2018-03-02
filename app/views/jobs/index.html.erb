@@ -5,9 +5,9 @@
 <% Job.all.each do |eJob| %>
   <div id='jobsList'>
  	 <a href="/jobs/<%= eJob.id %>">
-       <%= eJob.id %>
        <%= eJob.description %>
-     </a>
+       :Job Id#<%= eJob.id %>
+   </a>
   </div>
 <% end %>
 
