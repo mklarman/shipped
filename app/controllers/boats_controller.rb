@@ -13,6 +13,7 @@ class BoatsController < ApplicationController
 			redirect_to "/boats"
 		else
 			redirect_to new_boat_path
+		end	
 	end
 end
 
@@ -29,7 +30,19 @@ end
 
 	def destroy
 	end
-end
+
+
+    def assign
+    	@job = Job.find(params[:id])
+		@boat = Boat.find(params[:boat_id])
+		if @job.boats.find_by_id(@boat.id)
+            flash[:message] = 'this boat has been assigned'
+            redirect_to "/jobs/#{@job.id}"
+		else
+			@job.boats << @boat
+			redirect_to "/jobs/#{@job.id}"
+		end	
+    end	
 
  private
 
