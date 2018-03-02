@@ -10,7 +10,7 @@ class BoatsController < ApplicationController
 	def create
 		boat = Boat.new(boat_params)
 		if boat.save
-			redirect_to root_path
+			redirect_to "/boats"
 		else
 			redirect_to new_boat_path
 	end
