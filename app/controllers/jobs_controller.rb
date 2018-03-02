@@ -7,15 +7,15 @@ class JobsController < ApplicationController
     def create
 	  job = Job.new(job_params)
 	     if(job_params[:cost].to_f < 100)
-		    puts 'All Jobs Must Cost Min $100'
+		  flash[:message] = 'All Jobs Must Cost Min $100'
 		    redirect_to "/jobs" and return
 	     end
 	     if(job.description.length < 20)
-		    puts 'Descriptions must be longer than 20 characters'
+		  flash[:message] = 'Descriptions must be longer than 20 characters'
 		    redirect_to "/jobs" and return
 	     end
 	     if job.save!
-
+	      flash[:message] = 'New Job Created'
 	     	redirect_back(fallback_location: jobs_path)
 	     end
     end
