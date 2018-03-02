@@ -20,7 +20,7 @@ $bright_color: white;
   outline-width: 0;
 }
 
-@mixin general_text ($my_size: 1.7vmax) {
+@mixin our_general_text ($my_size: 1.5vmax) {
   display: inline-block;
   position: relative;
 
@@ -30,6 +30,7 @@ $bright_color: white;
   line-height: $my_size;
   text-align: center;
   color: $dark_color;
+  background: none;
 
   border: none;
   user-select: none;

@@ -11,29 +11,34 @@
   <body>
 
     <div class="nav">
-      <a href="/">
-        <div class="nav__dashboard">
+
+      <div class="nav_left">
+        <a href="/" class="nav__dashboard nav__links">
           Dashboard
-        </div>
-      </a>
+        </a>
 
-      <a href="/jobs/">
-        <div class="nav__jobs">
+        <a href="/jobs" class="nav__jobs nav__links">
           All jobs
-        </div>
-      </a>
+        </a>
+      </div>
 
-      <a href="/sessions/edit">
-        <div class="nav__edit">
+      <div class="nav_right">
+        <a href="/sessions/edit" class="nav__edit nav__links">
           Account
-        </div>
-      </a>
+        </a>
 
-      <form action='/logging_out' method='post' class="nav__form_logout">
-        <input type="submit" value="Logout">
-      </form>
+        <form action='/users/sign_out' method='DELETE' class="nav__form_logout">
+          <input type="submit" value="Logout" class="nav__form_logout__btn nav__links">
+        </form>
+      </div>
 
     </div>
+
+    <div class="spacer"></div>
+
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
 
     <div class="main">
       <%= yield %>
