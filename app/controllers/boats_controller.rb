@@ -1,6 +1,6 @@
 class BoatsController < ApplicationController
 	def index
-		@boat = Boat.all
+		@boats = Boat.all
 	end
 
 	def new
@@ -9,9 +9,15 @@ class BoatsController < ApplicationController
 
 	def create
 		boat = Boat.new(boat_params)
+		if boat.save
+			redirect_to root_path
+		else
+			redirect_to new_boat_path
 	end
 
 	def show
+		@boat = Boat.find(params [:id])
+		@jobs = Job.all
 	end
 	
 	def edit
@@ -26,4 +32,7 @@ end
 
  private
 
-# def
+ def boat_params
+ 	params.require(:boat).permit(:name, :capacity, :location, :user_id)
+ end
+end
