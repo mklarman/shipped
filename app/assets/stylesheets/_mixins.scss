@@ -1,0 +1,86 @@
+$dark_color: rgb(40, 50, 50);
+$quiet_color: rgb(76, 109, 109);
+$danger_color: rgb(161, 53, 53);
+$bright_color: white;
+
+@mixin page_title ($my_size: 2.1vmax) {
+  display: inline-block;
+  position: relative;
+
+  text-decoration: none;
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size;
+  text-align: center;
+  color: $dark_color;
+
+  border: none;
+  user-select: none;
+  box-shadow: none;
+  outline-width: 0;
+}
+
+@mixin our_general_text ($my_size: 1.5vmax) {
+  display: inline-block;
+  position: relative;
+
+  text-decoration: none;
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size;
+  text-align: center;
+  color: $dark_color;
+  background: none;
+
+  border: none;
+  user-select: none;
+  box-shadow: none;
+  outline-width: 0;
+}
+
+@mixin light_text ($my_size: 1.4vmax) {
+  display: inline-block;
+  position: relative;
+
+  text-decoration: none;
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size;
+  text-align: center;
+  color: $dark_color;
+
+  border: none;
+  user-select: none;
+  box-shadow: none;
+  outline-width: 0;
+}
+
+@mixin button_general ($my_size: 1.8vmax){
+  display: inline-block;
+  position: relative;
+
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size;  
+  color: $bright_color;
+
+  padding: $my_size/6 $my_size/1.8;
+  background: none;
+  background-color: $dark_color;
+
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: none;
+  outline-width: 0;
+}
+
+@mixin button_danger ($my_size: 1.8vmax){
+  @include button_general;
+  background-color: $danger_color;
+}
+
+@mixin button_general_pressed {
+  transform: translateY(0.1vmax);
+}
+

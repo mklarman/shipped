@@ -1,0 +1,48 @@
+// * {
+//   border: 1px red solid;
+// }
+
+body {
+  // background-color: red;
+  margin: 0;
+}
+
+.nav {
+  width: 100%;
+  // background-color: yellow;
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+.spacer {
+  height: 1.7vmax;
+}
+
+.nav_left {
+  display: inline-block;
+  position: relative;
+}
+
+.nav_right {
+  display: block;
+  position: relative;
+  float: right;
+}
+
+.nav__links {
+  @include our_general_text;
+  margin: 0.1vmax;
+  margin-right: 1vmax;
+  padding: 0.1vmax;
+}
+
+.nav__links:active {
+  @include button_general_pressed;  
+}
+
+.nav__form_logout {
+  display: inline-block;
+  position: relative;
+}
