@@ -1,35 +1,63 @@
 
 <% if @job != nil%>
-<h2>Job Info</h2>
+  <h2>Job Info</h2>
+  <div>description: <%=@job.description%></div> 
+  <div>origin: <%=@job.origin%></div> 
+  <div>destination: <%=@job.destination%></div> 
+  <div>cost: <%=@job.cost%></div> 
+  <div>containers: <%=@job.containers%></div> 
 
-<div>description: <%=@job.description%></div> 
-<div>origin: <%=@job.origin%></div> 
-<div>destination: <%=@job.destination%></div> 
-<div>cost: <%=@job.cost%></div> 
-<div>containers: <%=@job.containers%></div> 
+  <div>----------</div>
+  <h2>Update Job</h2>
+  <%=form_for @job do |j|%>
+     <div><%=j.text_area :description %></div>
+     <div><%=j.text_field :origin%></div>
+     <div><%=j.text_field :destination%></div>
+     <div><%=j.text_field :cost %></div>
+     <div><%=j.text_field :containers%></div>
+     <div><%= j.submit'update'%>
+  <%end%>
 
-<div>----------</div>
-<h2>Update Job</h2>
-
-<%=form_for @job do |j|%>
-<div><%=j.text_area :description %></div>
-<div><%=j.text_field :origin%></div>
-<div><%=j.text_field :destination%></div>
-<div><%=j.text_field :cost %></div>
-<div><%=j.text_field :containers%></div>
-<div><%= j.submit'update'%>
-<%end%>
-
-<%= form_tag(job_path, method: "delete") do %>
+  <%= form_tag(job_path, method: "delete") do %>
       <%= submit_tag("Delete Job") %>
-<% end %>
-<% else %>
-<h2>Opps, we don't have this job anymore!</h2>
+  <% end %>
+
 
 <div>----------</div>
 
+<% @job.boats.each do |b| %>
+   <div><%= image_tag b.avatar.url(:large) %></div>
+   <div><%= b.name %></div>
+   <div><%= b.location %></div>
+<% end %>
+
+<div>----------</div>
+<h2>Assign a Boat to this Job:</h2>
 
 
+<%if @job.boats == Boat.all %>
+  <h2>There is no current available boats</h2>
+<%else%>  
+<% @boats.each do |boat| %>
+  <%if @job.boats.find_by_id(boat.id)%>
+  <%else%>   
+    <div><%=boat.name%></div>    
+    <div><%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
+    <%= hidden_field_tag "id",  @job.id %>
+    <%= hidden_field_tag "boat_id", boat.id %>
+    <%= r.submit 'assign' %>
+    <%end%>
+    </div>
+    <% end %>
+    <%end%> 
+<%end%>   
+
+<% else %>
+
+    <h2>Opps, we don't have this job anymore!</h2>
 
 
 <%end%>
+
+
+
