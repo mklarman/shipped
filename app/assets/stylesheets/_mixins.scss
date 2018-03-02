@@ -6,7 +6,6 @@ $bright_color: white;
 @mixin page_title ($my_size: 2.1vmax) {
   display: inline-block;
   position: relative;
-
   text-decoration: none;
   font-family: main_font;
   font-size: $my_size;
