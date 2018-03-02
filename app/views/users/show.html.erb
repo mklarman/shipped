@@ -15,6 +15,7 @@
           boat #<%= ea_boat.id%> / 
           capacity: <%= ea_boat.capacity%> / 
           location: <%= ea_boat.location%>
+          selfie: <%= image_tag ea_boat.avatar.url(:medium) %>
         </div>
       </div>
     </a>
@@ -32,11 +33,12 @@
     <% if (current_user.id == @page_user.id) %>
       
       <%= form_for Boat.new do |f| %>
-        <%= f.text_field :name %>
-        <%= f.text_field :capacity %>
-        <%= f.text_field :location %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit %>
+        Name: <%= f.text_field :name %><br>
+        Capacity: <%= f.text_field :capacity %><br>
+        Location: <%= f.text_field :location %><br>
+        <%= f.hidden_field :user_id, value: current_user.id %><br>
+        Selfie: <%= f.file_field :avatar %><br>
+        <%= f.submit %><br>
       <% end %>
     <% end %>
   <% end %>
