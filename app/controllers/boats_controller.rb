@@ -10,15 +10,16 @@ class BoatsController < ApplicationController
 	def create
 		boat = Boat.new(boat_params)
 		if boat.save
-			redirect_to root_path
+			redirect_to "/boats"
 		else
 			redirect_to new_boat_path
 		end	
 	end
+end
 
 	def show
-		@boat = Boat.find(params [:id])
-		@jobs = Job.all
+		# @boat = Boat.find(params[:id])
+		# @jobs = Job.all
 	end
 	
 	def edit
@@ -46,6 +47,5 @@ class BoatsController < ApplicationController
  private
 
  def boat_params
- 	params.require(:boat).permit(:name, :capacity, :location, :user_id)
+ 	params.require(:boat).permit(:name, :capacity, :location, :avatar, :user_id)
  end
-end

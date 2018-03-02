@@ -37,6 +37,22 @@ $bright_color: white;
   outline-width: 0;
 }
 
+@mixin regular_textfield ($my_size: 1.5vmax) {
+  display: inline-block;
+  position: relative;
+
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size;
+  text-align: center;
+  color: $dark_color;
+  background: none;
+  
+  border: none;
+  border-bottom: 0.1vmax solid $dark_color;
+  outline-width: 0;  
+}
+
 @mixin light_text ($my_size: 1.4vmax) {
   display: inline-block;
   position: relative;

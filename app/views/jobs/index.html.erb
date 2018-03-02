@@ -2,23 +2,25 @@
   <h2>List Of Available Jobs</h2>
 </div>
 
-<% @jobs.each do |eJob| %>
+<% Job.all.each do |eJob| %>
   <div id='jobsList'>
  	 <a href="/jobs/<%= eJob.id %>">
-       <%= eJob.id %>
        <%= eJob.description %>
-     </a>
+       :Job Id#<%= eJob.id %>
+   </a>
   </div>
 <% end %>
 
-<div id='formForJobs'>
-  <%= form_for @job do |fill| %>
 
-    Job Description:<%= fill.text_field :description %><br>
-    Starting From:<%= fill.text_field :origin %><br>
-    Destination:<%= fill.text_field :destination %><br>
-    Cost:<%= fill.text_field :username :step => "0.01" %><br>
-    Containers:<%= fill.number_field :containers %><br>
+
+
+<div id='formForJobs'>
+  <%= form_for Job.new do |f| %>
+    Job Description:<%= f.text_field :description %><br>
+    Starting From:<%= f.text_field :origin %><br>
+    Destination:<%= f.text_field :destination %><br>
+    Cost:<%= f.text_field :cost %><br>
+    Containers:<%= f.number_field :containers %><br>
     <%= f.submit %>
   <% end %>
 </div>
