@@ -1,0 +1,35 @@
+
+<% if @job != nil%>
+<h2>Job Info</h2>
+
+<div>description: <%=@job.description%></div> 
+<div>origin: <%=@job.origin%></div> 
+<div>destination: <%=@job.destination%></div> 
+<div>cost: <%=@job.cost%></div> 
+<div>containers: <%=@job.containers%></div> 
+
+<div>----------</div>
+<h2>Update Job</h2>
+
+<%=form_for @job do |j|%>
+<div><%=j.text_area :description %></div>
+<div><%=j.text_field :origin%></div>
+<div><%=j.text_field :destination%></div>
+<div><%=j.text_field :cost %></div>
+<div><%=j.text_field :containers%></div>
+<div><%= j.submit'update'%>
+<%end%>
+
+<%= form_tag(job_path, method: "delete") do %>
+      <%= submit_tag("Delete Job") %>
+<% end %>
+<% else %>
+<h2>Opps, we don't have this job anymore!</h2>
+
+<div>----------</div>
+
+
+
+
+
+<%end%>
