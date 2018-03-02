@@ -1,0 +1,70 @@
+<div>
+
+  <!-- show boats and create boat button and jobs  -->
+  <div>
+    Boats
+  </div>
+
+  <% @page_user.boats.reverse.each do |ea_boat| %>
+    <a href="/boats/<%= ea_boat.id %>">
+      <div>
+        <div>
+          <%= ea_boat.name%>
+        </div>
+        <div>
+          boat #<%= ea_boat.id%> / 
+          capacity: <%= ea_boat.capacity%> / 
+          location: <%= ea_boat.location%>
+        </div>
+      </div>
+    </a>
+
+    <br>
+    <br>
+  <% end %>
+
+  <a href="">
+    +
+  </a>
+
+  <!-- if page user matches logged in user, allow adding boats -->
+  <% if (user_signed_in?) %>
+    <% if (current_user.id == @page_user.id) %>
+      
+      <%= form_for Boat.new do |f| %>
+        <%= f.text_field :name %>
+        <%= f.text_field :capacity %>
+        <%= f.text_field :location %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  <div>
+    Jobs
+  </a>
+
+  <% @page_user_jobs.reverse.each do |ea_job| %>
+    <a href="/jobs/<%= ea_job.id %>">
+      <div>        
+        <div>
+          <%= ea_job.description %>  
+        </div>
+        <div>
+          job #<%= ea_job.id %> / 
+          from: <%= ea_job.origin %> / 
+          to: <%= ea_job.destination %>
+          cost: $<%= ea_job.cost %>  
+        </div>
+      </div>
+    </a>
+
+    <br>
+    <br>
+  <% end %>
+  <a href="">
+    +
+  </a>
+
+</div>
