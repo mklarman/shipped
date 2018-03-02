@@ -14,10 +14,11 @@ class BoatsController < ApplicationController
 		else
 			redirect_to new_boat_path
 	end
+end
 
 	def show
-		@boat = Boat.find(params [:id])
-		@jobs = Job.all
+		# @boat = Boat.find(params[:id])
+		# @jobs = Job.all
 	end
 	
 	def edit
@@ -33,6 +34,5 @@ end
  private
 
  def boat_params
- 	params.require(:boat).permit(:name, :capacity, :location, :user_id)
+ 	params.require(:boat).permit(:name, :capacity, :location, :avatar, :user_id)
  end
-end
