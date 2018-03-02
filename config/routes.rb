@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
  
  
-devise_scope :user do
-  get '/', to: 'devise/sessions#new' 
-end
 
 
 
@@ -15,5 +12,11 @@ end
  resources :boats
  resources :jobs
 
+
+devise_scope :user do
+  get '/', to: 'devise/sessions#new' 
+   root  "devise/sessions#new"
+  end
 end
+  
 

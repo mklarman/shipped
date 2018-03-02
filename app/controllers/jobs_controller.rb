@@ -3,9 +3,13 @@ class JobsController < ApplicationController
 
 
 def create
+	job = Job.new(job_params)
+	if(job.cost < 100)
+		flash[:message] = 'All Jobs Must Cost Min $100'
 
 
 end
+
 
 	def show
         @job = Job.find_by_id(params[:id])
@@ -25,6 +29,7 @@ end
         job.destroy
         redirect_to '/'
 	end
+
 private
     def job_params
     	params.require(:job).permit(:description, :origin, :destination, :cost, :containers)
