@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :boats
   resources :jobs
 
+
   # https://devhints.io/devise
   # unauthenticated do
   #   root :to => 'devise/sessions#new'

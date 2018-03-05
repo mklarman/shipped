@@ -1,0 +1,33 @@
+#edit_wrapper{
+	width:100%;
+	height:auto;
+	font-family: main_font;
+}
+
+#edit_form{
+	background-color: rgba(225,225,225, 0.7);
+	width:45%;
+	margin: 0px auto;
+	padding: 5%;
+	border-radius: 2px;
+}
+
+#edit_title{
+	@include page_title;
+margin-bottom: 30px;
+}
+
+.edit_field{
+	@include regular_textfield;
+	margin-bottom: 10px;
+}
+
+.edit_update, .edit_delete{
+	margin-top: 15px;
+	@include button_general;
+	margin-bottom: 20px;
+}
+
+.edit_delete{
+    background-color: $danger_color;
+}
