@@ -5,23 +5,33 @@
 <% Job.all.each do |eJob| %>
   <div id='jobsList'>
  	 <a href="/jobs/<%= eJob.id %>">
-       <%= eJob.description %>
-       :Job Id#<%= eJob.id %>
+       <div id='jobDescrip'><%= eJob.description %></div>
+       <div id='jobID'>Job ID: 00000<%= eJob.id %></div>
    </a>
   </div>
 <% end %>
 
 
 
+<div id='jobHeading'>
+  <h2>NEW JOB FORM</h2>
+</div>  
 
 <div id='formForJobs'>
   <%= form_for Job.new do |f| %>
-    Job Description:<%= f.text_field :description %><br>
-    Starting From:<%= f.text_field :origin %><br>
-    Destination:<%= f.text_field :destination %><br>
-    Cost:<%= f.text_field :cost %><br>
-    Containers:<%= f.number_field :containers %><br>
-    <%= f.submit %>
-  <% end %>
+    <div class='field1'>Job Description:</div>
+    <div class='field1'>Starting From:</div>
+    <div class='field1'>Destination:</div>
+    <div class='field1'>Cost:</div>
+    <div class='field1'>Containers:</div>
+  <div id='jobSubmit'><%= f.submit %></div>
+  <div id='formatJob'>
+    <div class='boxFormat'><%= f.text_field :description %></div>
+    <div class='boxFormat'><%= f.text_field :origin %></div>
+    <div class='boxFormat'><%= f.text_field :destination %></div>
+    <div class='boxFormat'><%= f.text_field :cost %></div>
+    <div class='boxFormat'><%= f.number_field :containers %></div>
+ <% end %>
+  </div>
 </div>
 

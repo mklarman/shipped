@@ -10,31 +10,49 @@
 
   <body>
 
-    <div class="nav">
+      <!-- https://github.com/plataformatec/devise/wiki/How-To:-Add-sign_in,-sign_out,-and-sign_up-links-to-your-layout-template -->
 
-      <div class="nav_left">
-        <a href="/" class="nav__dashboard nav__links">
-          Dashboard
-        </a>
 
-        <a href="/jobs" class="nav__jobs nav__links">
-          All jobs
-        </a>
+    <% if (user_signed_in?) %>
+      <div class="nav">
+
+      
+        <div class="nav_left">
+          <% if (user_signed_in?) %>
+          <a href="/users/<%= current_user.id.to_s %>" class="nav__dashboard nav__links">
+            Dashboard
+          </a>
+      
+
+          <a href="/jobs" class="nav__jobs nav__links">
+            All jobs
+          </a>
+          <% else %>
+          <% end %>
+        </div>
+        
+
+        <div class="nav_right">
+          <% if (user_signed_in?) %>
+            <a href="/sessions/edit" class="nav__edit nav__links">
+              Account
+            </a>
+            
+            <!-- https://stackoverflow.com/questions/5697512/adding-a-class-to-a-link-to-is-breaking-the-link -->
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "nav__links"%>
+
+          <% else %>
+          <a href="/sessions/edit" class="nav__edit nav__links">
+            Account
+          </a>
+          <% end %>
+
+        </div>
       </div>
+    
 
-      <div class="nav_right">
-        <a href="/sessions/edit" class="nav__edit nav__links">
-          Account
-        </a>
-
-        <form action='/users/sign_out' method='DELETE' class="nav__form_logout">
-          <input type="submit" value="Logout" class="nav__form_logout__btn nav__links">
-        </form>
-      </div>
-
-    </div>
-
-    <div class="spacer"></div>
+      <div class="spacer"></div>
+    <% end %>
 
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>

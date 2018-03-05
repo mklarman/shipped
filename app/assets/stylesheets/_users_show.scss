@@ -1,0 +1,80 @@
+// * {
+//   border: 1px red solid;
+// }
+
+.main__users {
+  width: 98vw;
+  text-align: center;
+  position: relative;
+  // margin: 1vw;
+}
+
+.main__users__spacer_small {
+  display: block;
+  position: relative;
+  height: 1vmax;
+}
+
+.main__users__title {
+  @include page_title;
+}
+
+.main__users__boats {
+  display: inline-block;
+  position: relative;
+  width: 45%;
+  vertical-align: top;
+}
+
+.main__users__boats__item {
+  @include our_general_text;
+}
+
+.main__users__jobs__item {
+  @include our_general_text;
+}
+
+.main__users__boats__item_detail {
+  @include light_text;
+}
+
+.main__users__jobs__item_detail {
+  @include light_text;
+}
+
+.main__users__jobs {
+  display: inline-block;
+  position: relative;
+  width: 45%;
+  vertical-align: top;
+}
+
+.main__users__boats__form {
+  width: 100%;
+  text-align: center;
+}
+
+.main__users__boats__form_left {
+  width: 29%;
+  display: inline-block;
+  position: relative;
+  height: 2vmax;
+  text-align: right;
+}
+
+.main__users__boats__form_right {
+  width: 69%;
+  display: inline-block;
+  position: relative;
+  background-color: purple 1px solid;
+  height: 2vmax;
+  text-align: left;
+}
+
+// .main__users__boats__form_left__item {
+//   text-align: right;
+// }
+
+// .main__users__boats__form_right__item {
+//   text-align: left;
+// }
