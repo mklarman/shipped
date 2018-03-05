@@ -5,9 +5,14 @@
 }
 
 .jobshow_column{
-	margin-left:250px;
+	width: 25%;
+	margin-left:200px;
 	margin-top:50px;
 	float: left;
+}
+
+#job_edit_form{
+	display:none;
 }
 
 #jobshow_title{
@@ -33,13 +38,14 @@
 
 .job_update_button, .job_delete_button{
 	@include button_general;
+	margin-left:5px;
 	float: left;
 	display: inline-block;
 }
 
 .jobshow_field{
   width:100%;	
-position: relative;
+  position: relative;
   font-family: main_font;
   font-size: 1.5vmax;
   line-height: 1.5vmax;
@@ -50,6 +56,14 @@ position: relative;
   border-bottom: 0.1vmax solid rgb(40, 50, 50);
   outline-width: 0; 
   margin-bottom:5px;
+}
+
+.jobshow_boats_assigned{
+	width:100px;
+	margin-top:20px;
+	display:inline-block;
+	margin-bottom: 50px;
+	// float:left;
 }
 
 
