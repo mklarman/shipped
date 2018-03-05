@@ -6,14 +6,24 @@
 	font-family: main_font;
 }
 
-.login_video{
-  // width: 100%; 
-  // height: 100%; 	
+#video_wrapper{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+  z-index:-1
+}
+#video_wrapper video{
+  min-width: 100%; 
+  min-height: 100%; 
   width: auto;
   height: auto;
-  position: fixed;
-  transform: translate(-20%,-20%);
-  z-index: -1;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 #login_title, #sign_title{
