@@ -6,10 +6,19 @@ Rails.application.routes.draw do
  resources :users
  resources :boats
  resources :jobs
+
+
+
+
+authenticated do
+  root :to => 'users#show'
+end
+
  
   devise_scope :user do
  	get '/', to: 'devise/sessions#new' 
  	root  "devise/sessions#new"
+
  end
 end
 

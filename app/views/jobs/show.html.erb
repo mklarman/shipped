@@ -1,30 +1,34 @@
-
+<div id='jobshow_wrapper'>
+  <div class='jobshow_column'>
 <% if @job != nil%>
-  <h2>Job Info</h2>
-  <div>description: <%=@job.description%></div> 
-  <div>origin: <%=@job.origin%></div> 
-  <div>destination: <%=@job.destination%></div> 
-  <div>cost: <%=@job.cost%></div> 
-  <div>containers: <%=@job.containers%></div> 
+  <div id='jobshow_title' >Job Info</div>
+  <div class='jobshow_info'>Description: <%=@job.description%></div> 
+  <div class='jobshow_info'>Origin: <%=@job.origin%></div> 
+  <div class='jobshow_info'>Destination: <%=@job.destination%></div> 
+  <div class='jobshow_info'>Cost: $<%=@job.cost%></div> 
+  <div class='jobshow_info'>Containers: <%=@job.containers%></div> 
 
-  <div>----------</div>
   <h2>Update Job</h2>
   <%=form_for @job do |j|%>
-     <div><%=j.text_area :description %></div>
-     <div><%=j.text_field :origin%></div>
-     <div><%=j.text_field :destination%></div>
-     <div><%=j.text_field :cost %></div>
-     <div><%=j.text_field :containers%></div>
-     <div><%= j.submit'update'%>
+     <div class='jobshow_info'>Description: </div>
+     <div ><%=j.text_area :description, class: 'jobshow_field' %></div>
+     <div class='jobshow_info'>Origin: </div>
+     <div><%=j.text_field :origin, class: 'jobshow_field'%></div>
+     <div class='jobshow_info'>Destination: </div>
+     <div ><%=j.text_field :destination, class: 'jobshow_field'%></div>
+     <div><%=j.text_field :cost, class: 'jobshow_field' %></div>
+     <div ><%=j.text_field :containers, class: 'jobshow_field'%></div>
+     <div><%= j.submit'update', class: 'job_update_button'%></div>
   <%end%>
 
   <%= form_tag(job_path, method: "delete") do %>
-      <%= submit_tag("Delete Job") %>
+      <%= submit_tag("Delete Job", class: 'job_delete_button') %>
   <% end %>
 
+</div>
 
-<div>----------</div>
-
+<div class='jobshow_column'>
+  <h2>This job has been assigned to:</h2>
 <% @job.boats.each do |b| %>
    <div><%= image_tag b.avatar.url(:large) %></div>
    <div><%= b.name %></div>
@@ -38,16 +42,15 @@
 <%if @job.boats == Boat.all %>
   <h2>There is no current available boats</h2>
 <%else%>  
-<% @boats.each do |boat| %>
-  <%if @job.boats.find_by_id(boat.id)%>
-  <%else%>   
-    <div><%=boat.name%></div>    
-    <div><%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
-    <%= hidden_field_tag "id",  @job.id %>
-    <%= hidden_field_tag "boat_id", boat.id %>
-    <%= r.submit 'assign' %>
-    <%end%>
-    </div>
+  <% @boats.each do |boat| %>
+    <%if @job.boats.find_by_id(boat.id)%>
+    <%else%>   
+      <div><%=boat.name%></div>    
+      <div><%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
+        <%= hidden_field_tag "id",  @job.id %>
+        <%= hidden_field_tag "boat_id", boat.id %>
+        <%= r.submit 'assign' %>
+        <%end%></div>
     <% end %>
     <%end%> 
 <%end%>   
@@ -58,6 +61,7 @@
 
 
 <%end%>
+</div>
 
-
+</div>
 
