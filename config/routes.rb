@@ -7,9 +7,19 @@ Rails.application.routes.draw do
   resources :boats
   resources :jobs
 
-  authenticated do
-    root :to => 'users#show'
-  end
+  # https://devhints.io/devise
+  # unauthenticated do
+  #   root :to => 'devise/sessions#new'
+  # end
+  # authenticated do
+  #   root :to => 'users#show'
+  # end
+
+  # as :user do
+  #   get 'sign_in', :to => 'devise/sessions#new'
+  # end
+
+  
  
   devise_scope :user do
     get '/', to: 'devise/sessions#new' 
