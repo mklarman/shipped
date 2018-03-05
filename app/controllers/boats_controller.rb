@@ -17,13 +17,9 @@ class BoatsController < ApplicationController
 	end
 
 	def show
-<<<<<<< HEAD
 		@boat = Boat.find(params[:id])
 		@jobs = Job.all
-=======
 	  @boat = Boat.find_by_id(params[:id])
-	  redirect_to '/boats/#{boat.id/edit}'
->>>>>>> master
 	end
 	
 	def edit
