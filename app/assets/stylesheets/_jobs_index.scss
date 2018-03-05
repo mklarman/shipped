@@ -1,26 +1,78 @@
+
+
+body{
+	background-color: white;
+}
+
+
 #availJobs{
 	height: 100px;
-	width: 350px;
-	border: 2px solid black;
+	width: 400px;
+	font-size: 25px;
+	margin-top: 50px;
+	margin-bottom: 10px;
 
 }
 
 #jobsList{
-	height: 20px;
-	width: 270px;
-	border: 2px solid black;
-	font-size: 18px;
+	height: 50px;
+	width: 300px;
+	font-size: 25px;
 	margin-top: 3px;
 	margin-bottom: 3px;
 
 }
 
 #formForJobs{
-	height: 300px;
-	width: 350px;
-	border: 2px solid black;
+	height: 200px;
+	width: 500px;
 	margin-top: 20px;
-	font-size: 20px;
+	font-size: 25px;
+	margin-left: 700px;
+	color: blue;
+	margin-top: 50px;
+}
 
+#jobHeading{
+	height: 50px;
+	width: 400px;
+	margin-left: 650px;
+	font-size: 25px;
+	margin-top: -350px;
+	text-align: center;
+}
+
+
+#jobID{
+	height: 50px;
+	width: 200px;
+	margin-top: -30px;
+	margin-left: 307px;
 
 }
+
+.field1{
+	text-align: right;
+	height: 35px;
+	width: 200px;
+}
+
+#formatJob{
+	height: 200px;
+	width: 200px;
+	margin-left: 200px;
+	margin-top: -207px;
+}
+
+.boxFormat{
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+#jobSubmit{
+	height: 25px;
+	width: 100px;
+	margin-left: 200px;
+}
+
+
