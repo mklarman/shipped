@@ -13,8 +13,6 @@ class UsersController < ApplicationController
       end
       @page_user_jobs = @page_user_jobs.uniq
     end
-
   end
-
 
 end
