@@ -1,72 +1,125 @@
-<div>
+<div class="main__users">
+  <% if (!!@page_user) %>
 
-  <!-- show boats and create boat button and jobs  -->
-  <div>
-    Boats
-  </div>
-
-  <% @page_user.boats.reverse.each do |ea_boat| %>
-    <a href="/boats/<%= ea_boat.id %>">
-      <div>
-        <div>
-          <%= ea_boat.name%>
-        </div>
-        <div>
-          boat #<%= ea_boat.id%> / 
-          capacity: <%= ea_boat.capacity%> / 
-          location: <%= ea_boat.location%>
-          selfie: <%= image_tag ea_boat.avatar.url(:medium) %>
-        </div>
+    <div class="main__users__boats">
+      <!-- show boats and create boat button and jobs  -->
+      <div class="main__users__title">
+        Boats
       </div>
-    </a>
 
-    <br>
-    <br>
-  <% end %>
+      <div class="main__users__spacer_small">
+      </div>
 
-  <a href="">
-    +
-  </a>
+      <% @page_user.boats.reverse.each do |ea_boat| %>        
+        
+        <a href="/boats/<%= ea_boat.id %>" class="main__users__boats__item">
+          <div>
+            <%= ea_boat.name%>
+          </div>
+          <div class="main__users__boats__item_detail">
+            boat #<%= ea_boat.id%> / 
+            capacity: <%= ea_boat.capacity%> / 
+            location: <%= ea_boat.location%><br>
+            <% if ea_boat.avatar_file_name %>
+              <%= image_tag ea_boat.avatar.url(:medium) %>
+            <% end %>
+            
+          </div>
+        </a> 
 
-  <!-- if page user matches logged in user, allow adding boats -->
-  <% if (user_signed_in?) %>
-    <% if (current_user.id == @page_user.id) %>
-      
-      <%= form_for Boat.new do |f| %>
-        Name: <%= f.text_field :name %><br>
-        Capacity: <%= f.text_field :capacity %><br>
-        Location: <%= f.text_field :location %><br>
-        <%= f.hidden_field :user_id, value: current_user.id %><br>
-        Selfie: <%= f.file_field :avatar %><br>
-        <%= f.submit %><br>
+        <br>
+        <br>
       <% end %>
-    <% end %>
-  <% end %>
-  
-  <div>
-    Jobs
-  </a>
+    
 
-  <% @page_user_jobs.reverse.each do |ea_job| %>
-    <a href="/jobs/<%= ea_job.id %>">
-      <div>        
-        <div>
-          <%= ea_job.description %>  
-        </div>
-        <div>
-          job #<%= ea_job.id %> / 
-          from: <%= ea_job.origin %> / 
-          to: <%= ea_job.destination %>
-          cost: $<%= ea_job.cost %>  
-        </div>
+
+    
+      <% if (user_signed_in?) %>
+
+        <% if (current_user.id == @page_user.id) %>
+          <!-- if page user matches logged in user, allow adding boats -->
+          <a href="">
+            +
+          </a>
+
+          <%= form_for Boat.new, :html => {:class => 'main__users__boats__form'} do |f| %>
+            <!-- <div class="main__users__boats__form_left"> -->
+              <div class="main__users__boats__form_left">
+                Name:
+              </div>
+              <div class="main__users__boats__form_right">
+                  <%= f.text_field :name %>
+              </div>
+
+
+              <div class="main__users__boats__form_left">
+                Capacity:
+              </div>
+              <div class="main__users__boats__form_right">
+                <%= f.text_field :capacity %>
+              </div>
+
+              <div class="main__users__boats__form_left">
+                Location:
+              </div>
+
+              <div class="main__users__boats__form_right">
+                <%= f.text_field :location%>
+              </div>
+
+              <div class="main__users__boats__form_left">
+                Selfie:
+              </div>
+
+              <div class="main__users__boats__form_right">
+                  <%= f.file_field :avatar %>
+              </div>
+
+            <!-- </div> -->
+
+
+            <div>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit %>
+            </div>
+          <% end %>
+        <% end %>
+        
+      <% end %>
+    </div>
+
+    <div class="main__users__jobs">
+      <div class="main__users__title">
+        Jobs
       </div>
-    </a>
 
-    <br>
-    <br>
+      <div class="main__users__spacer_small">
+      </div>
+
+      <% @page_user_jobs.reverse.each do |ea_job| %>
+        <a href="/jobs/<%= ea_job.id %>" class="main__users__jobs__item">
+          <div>        
+            <div>
+              <%= ea_job.description %>  
+            </div>
+            <div class="main__users__jobs__item_detail">
+              job #<%= ea_job.id %> / 
+              from: <%= ea_job.origin %> / 
+              to: <%= ea_job.destination %>
+              cost: $<%= ea_job.cost %>  
+            </div>
+          </div>
+        </a>
+
+        <br>
+        <br>
+      <% end %>
+      <a href="">
+        +
+      </a>
+    </div>
+
+  <% else %>
+    This account doesn't exist
   <% end %>
-  <a href="">
-    +
-  </a>
-
 </div>
