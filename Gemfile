@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'
+gem "hpricot"
+gem "ruby_parser"
 gem "paperclip", "~> 5.2.1"
 
 group :development, :test do
