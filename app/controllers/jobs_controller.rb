@@ -44,10 +44,6 @@ end
 	     end
     end
 
-	def show
-        @job = Job.find_by_id(params[:id])
-	end
-
 	def update
 		job = Job.find_by_id(params[:id])
 		if job.update(job_params)

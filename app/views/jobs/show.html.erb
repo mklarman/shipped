@@ -38,16 +38,15 @@
 <%if @job.boats == Boat.all %>
   <h2>There is no current available boats</h2>
 <%else%>  
-<% @boats.each do |boat| %>
-  <%if @job.boats.find_by_id(boat.id)%>
-  <%else%>   
-    <div><%=boat.name%></div>    
-    <div><%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
-    <%= hidden_field_tag "id",  @job.id %>
-    <%= hidden_field_tag "boat_id", boat.id %>
-    <%= r.submit 'assign' %>
-    <%end%>
-    </div>
+  <% @boats.each do |boat| %>
+    <%if @job.boats.find_by_id(boat.id)%>
+    <%else%>   
+      <div><%=boat.name%></div>    
+      <div><%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
+        <%= hidden_field_tag "id",  @job.id %>
+        <%= hidden_field_tag "boat_id", boat.id %>
+        <%= r.submit 'assign' %>
+        <%end%></div>
     <% end %>
     <%end%> 
 <%end%>   
