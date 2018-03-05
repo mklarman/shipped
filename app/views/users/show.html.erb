@@ -1,4 +1,5 @@
 <div class="main__users">
+  
   <% if (!!@page_user) %>
 
     <div class="main__users__boats">
@@ -9,6 +10,64 @@
 
       <div class="main__users__spacer_small">
       </div>
+
+      <% if (user_signed_in?) %>
+
+        <% if (current_user.id == @page_user.id) %>
+          <!-- if page user matches logged in user, allow adding boats -->
+          <div class="main__users__boats__add">
+            +
+          </div>
+
+          <%= form_for Boat.new, :html => {:class => 'main__users__boats__form'} do |f| %>
+            <!-- <div class="main__users__boats__form_left"> -->
+              <div class="main__users__boats__form_left">
+                Name:
+              </div>
+              <div class="main__users__boats__form_right">
+                  <%= f.text_field :name, class: "main__users__boats__all__txt" %>
+              </div>
+
+
+              <div class="main__users__boats__form_left">
+                Capacity:
+              </div>
+
+              <div class="main__users__boats__form_right">
+                <%= f.text_field :capacity, class: "main__users__boats__all__txt" %>
+              </div>
+
+              <div class="main__users__boats__form_left">
+                Location:
+              </div>
+
+              <div class="main__users__boats__form_right">
+                <%= f.text_field :location, class: "main__users__boats__all__txt" %>
+              </div>
+
+              <div class="main__users__boats__form_left">
+                Selfie:
+              </div>
+
+              <div class="main__users__boats__form_right">
+                <label class="main__users__boats__all__upload">
+                  Upload file
+                  <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
+                </label>
+              </div>
+
+            <!-- </div> -->
+
+
+            <div>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit class: "main__users__boats__submit" %>
+            </div>
+          <% end %>
+        <% end %>
+        
+      <% end %>
+
 
       <% @page_user.boats.reverse.each do |ea_boat| %>        
         
@@ -34,58 +93,7 @@
 
 
     
-      <% if (user_signed_in?) %>
-
-        <% if (current_user.id == @page_user.id) %>
-          <!-- if page user matches logged in user, allow adding boats -->
-          <a href="">
-            +
-          </a>
-
-          <%= form_for Boat.new, :html => {:class => 'main__users__boats__form'} do |f| %>
-            <!-- <div class="main__users__boats__form_left"> -->
-              <div class="main__users__boats__form_left">
-                Name:
-              </div>
-              <div class="main__users__boats__form_right">
-                  <%= f.text_field :name %>
-              </div>
-
-
-              <div class="main__users__boats__form_left">
-                Capacity:
-              </div>
-              <div class="main__users__boats__form_right">
-                <%= f.text_field :capacity %>
-              </div>
-
-              <div class="main__users__boats__form_left">
-                Location:
-              </div>
-
-              <div class="main__users__boats__form_right">
-                <%= f.text_field :location%>
-              </div>
-
-              <div class="main__users__boats__form_left">
-                Selfie:
-              </div>
-
-              <div class="main__users__boats__form_right">
-                  <%= f.file_field :avatar %>
-              </div>
-
-            <!-- </div> -->
-
-
-            <div>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit %>
-            </div>
-          <% end %>
-        <% end %>
-        
-      <% end %>
+      
     </div>
 
     <div class="main__users__jobs">
@@ -114,7 +122,7 @@
         <br>
         <br>
       <% end %>
-      <a href="">
+      <a href="/jobs" class="main__users__jobs__add">
         +
       </a>
     </div>
