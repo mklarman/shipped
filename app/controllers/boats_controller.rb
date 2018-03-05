@@ -18,7 +18,7 @@ class BoatsController < ApplicationController
 
 	def show
 	  @boat = Boat.find_by_id(params[:id])
-	  redirect_to '/boats/#{boat.id/edit}'
+	  
 	end
 	
 	def edit
@@ -27,13 +27,17 @@ class BoatsController < ApplicationController
 	end
 
 	def update
-		@boat = Boat.find(params[:id])
-		@boat = Boat.update
-	end
+		@boat = Boat.find_by_id(params[:id])
+		if boat.update(boat_params)
+        	redirect_to "/boats/#{boat.id}"
+        else
+        	render "/boats/#{boat.id}"
+        end
+	end	
 
 	def destroy
-		@boat = Boat.find(params[:id])
-		@boat = Boat.destroy
+		@boat = Boat.find_by_id(params[:id])
+		@boat.destroy
 		redirect_to '/boats'
 	end
 
