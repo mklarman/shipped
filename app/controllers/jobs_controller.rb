@@ -44,15 +44,6 @@ end
 	     end
     end
 
-	def update
-		job = Job.find_by_id(params[:id])
-		if job.update(job_params)
-        	redirect_to "/jobs/#{job.id}"
-        else
-        	render "/jobs/#{job.id}"
-        end
-	end	
-
 	def destroy
 		job = Job.find_by_id(params[:id])
         job.destroy
