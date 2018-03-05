@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   # Overwriting the sign_out redirect path method
   
+  
 
   protected
 

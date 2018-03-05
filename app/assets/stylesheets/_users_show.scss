@@ -22,8 +22,17 @@
 .main__users__boats {
   display: inline-block;
   position: relative;
-  width: 45%;
+  width: 48%;
   vertical-align: top;
+}
+
+.main__users__boats__add {
+  @include button_add;
+  background-color: $quiet_color;
+}
+
+.main__users__boats__add:active {
+  @include button_general_pressed;
 }
 
 .main__users__boats__item {
@@ -45,7 +54,7 @@
 .main__users__jobs {
   display: inline-block;
   position: relative;
-  width: 45%;
+  width: 48%;
   vertical-align: top;
 }
 
@@ -69,6 +78,53 @@
   background-color: purple 1px solid;
   height: 2vmax;
   text-align: left;
+}
+
+.main__users__boats__all__txt {
+  @include regular_textfield;
+}
+
+.main__users__boats__submit {
+  @include button_general;
+}
+
+.main__users__boats__all__upload {
+  overflow: hidden;
+  position: relative;
+}
+
+.main__users__boats__all__upload [type=file] {
+  cursor: inherit;
+  // display: block;
+  // font-size: 999px;
+  // filter: alpha(opacity=0);
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  top: 0;
+}
+
+/* Example stylistic flourishes */
+
+.main__users__boats__all__upload {
+  @include button_general;
+  background-color: $quiet_color;
+}
+
+.main__users__boats__all__upload:active {
+  @include button_general_pressed;
+}
+
+.main__users__jobs__add {
+  @include button_add;
+  background-color: $quiet_color;
+}
+
+.main__users__jobs__add:active {
+  @include button_general_pressed;
 }
 
 // .main__users__boats__form_left__item {
