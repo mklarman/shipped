@@ -5,14 +5,17 @@
 <% Job.all.each do |eJob| %>
   <div id='jobsList'>
  	 <a href="/jobs/<%= eJob.id %>">
-       <%= eJob.description %>
-       :Job Id#<%= eJob.id %>
+       <div id='jobDescrip'><%= eJob.description %></div>
+       <div id='jobID'>Job ID: 00000<%= eJob.id %></div>
    </a>
   </div>
 <% end %>
 
 
 
+<div id='jobHeading'>
+  <h2>NEW JOB FORM</h2>
+</div>  
 
 <div id='formForJobs'>
   <%= form_for Job.new do |f| %>
