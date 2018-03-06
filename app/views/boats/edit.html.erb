@@ -6,75 +6,69 @@
   <div class="main__users__spacer_small">
   </div>
 
-  <%= form_for @page_boat do |f| %>
-    <!-- Name:  -->
-    <%#f.text_field :name %>
-    <!-- Capacity: -->
-    <%#f.text_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
-    <!-- Location:  -->
-    <%#f.text_field :location %>
-
-    <!-- <div> -->
-      <!-- Image: -->
-      <%# f.label :image %>
-    <!-- </div> -->
-
-    <!-- <div> -->
-      <%# f.file_field :image, class:'form_control' %>
-    <!-- </div> -->
-
-    <div class="main__users__boats__form_left">
-        Ship name:
-      </div>
-      <div class="main__users__boats__form_right">
-        <%= f.text_field :name, class: "main__users__boats__all__txt", placeholder: "unique" %>
-      </div>
-      <br>
+  <% if (!!@page_boat) %>
+    <%= form_for @page_boat do |f| %>
 
       <div class="main__users__boats__form_left">
-        Capacity:
-      </div>
+          Ship name:
+        </div>
+        <div class="main__users__boats__form_right">
+          <%= f.text_field :name, class: "main__users__boats__all__txt", placeholder: "unique" %>
+        </div>
+        <br>
 
-      <div class="main__users__boats__form_right">
-        <%= f.number_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
-      </div>
-      <br>
+        <div class="main__users__boats__form_left">
+          Capacity:
+        </div>
 
-      <div class="main__users__boats__form_left">
-        Location:
-      </div>
+        <div class="main__users__boats__form_right">
+          <%= f.number_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
+        </div>
+        <br>
 
-      <div class="main__users__boats__form_right">
-        <%= f.text_field :location, class: "main__users__boats__all__txt", placeholder: "standby" %>
-      </div>
-      <br>
+        <div class="main__users__boats__form_left">
+          Location:
+        </div>
 
-      <div class="main__users__boats__form_left">
-        Image:
-      </div>
+        <div class="main__users__boats__form_right">
+          <%= f.text_field :location, class: "main__users__boats__all__txt", placeholder: "standby" %>
+        </div>
+        <br>
 
-      <div class="main__users__boats__form_right">
-        <label class="main__users__boats__all__upload">
-          upload...
-          <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
-        </label>
-      </div>
+        <div class="main__users__boats__form_left">
+          Image:
+        </div>
 
-      
-        <%= f.hidden_field :user_id, value: current_user.id %>
-      <div>
-        <%= f.submit class: "main__users__boats__submit", value: "Update Boat" %>
-      </div>
+        <div class="main__users__boats__form_right">
+          <label class="main__users__boats__all__upload">
+            upload...
+            <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
+          </label>
+        </div>
 
-  <% end %>
+        
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        <div>
+          <%= f.submit class: "main__users__boats__submit", value: "Update Boat" %>
+        </div>
 
-  <div class="main__users__spacer_small">
-  </div>
-  <div class="main__users__spacer_small">
-  </div>
+    <% end %>
   
-  <%= form_tag(boat_path, method: "delete") do %>
-    <%= submit_tag("Delete Boat", class: 'main__boat__delete') %>
-  <% end %>
+  
 
+    <div class="main__users__spacer_small">
+    </div>
+    <div class="main__users__spacer_small">
+    </div>
+    
+    <%= form_tag(boat_path, method: "delete") do %>
+      <%= submit_tag("Delete Boat", class: 'main__boat__delete') %>
+    <% end %>
+
+  <% else %>
+    <br><br><br>
+    <div class="main__users__boats__missing">
+      This ship doesn't exist
+    </div>
+  <% end %>
 </div>

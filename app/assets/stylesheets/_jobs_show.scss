@@ -6,9 +6,11 @@
 
 .jobshow_column{
 	width: 35%;
-	margin-left:10vw;
+	margin-left:5vw;
 	margin-top:10vh;
-	float: left;
+  float: left;
+  vertical-align: bottom;
+  text-align: center;
 }
 
 #job_edit_form{
@@ -39,7 +41,7 @@
 	text-align: left;
 }
 
-.jobshow_info{
+.jobshow_info {
   position: relative;
   text-decoration: none;
   font-family: main_font;
@@ -52,6 +54,8 @@
   box-shadow: none;
   outline-width: 0;
   margin-bottom:5px;
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
 
@@ -95,17 +99,27 @@
 	// float:left;
 }
 
+.jobshow_boats_assigned_name {
+    width:100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  // background-color: red;
+  // border: 1px red solid;
+}
+
 .jobshow_boats_listed{
 	margin-left:10px;
 	text-align:center;
 	margin-top:20px;
 	display:inline-block;
 	margin-bottom: 50px;
-	float:left;
-    @include our_general_text;
-    padding: 1vmax;
-    border-radius: 1vmax;
-    margin-top: 2vmax;
+	// float:left;
+  @include our_general_text;
+  padding: 1vmax;
+  border-radius: 1vmax;
+  margin-top: 2vmax;
+  width: 35%;
     
 }
 
@@ -121,6 +135,10 @@
 	@include button_general_pressed 
 }
 
+.jobshow_boats_infotext {
+  @include our_general_text;
+  margin-bottom: 1vmax;
+}
 
 
 

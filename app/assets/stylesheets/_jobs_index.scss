@@ -33,6 +33,8 @@
 .main__jobs_i__jobs__item__info {
   @include our_general_text;
   text-align: left;
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
 .main__jobs_i__jobs__item__detail {
