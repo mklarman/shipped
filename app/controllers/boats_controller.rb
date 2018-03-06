@@ -21,7 +21,9 @@ class BoatsController < ApplicationController
 	def show
 		@boat = Boat.find_by_id(params[:id])
 		@jobs = Job.all
+
 	  # @boat = Boat.find_by_id(params[:id])
+
 	end
 	
 	def edit
@@ -31,6 +33,7 @@ class BoatsController < ApplicationController
 
 	def update
 		@boat = Boat.find_by_id(params[:id])
+
 		@boat = Boat.update
 	end
 
@@ -39,7 +42,27 @@ class BoatsController < ApplicationController
     this_boat.destroy
     flash[:message] = 'Ship erased'
 		redirect_to root_path
+
+# 		if boat.update(boat_params)
+#         	redirect_to "/boats/#{boat.id}"
+#         else
+#         	render "/boats/#{boat.id}"
+#         end
+# 	end	
+
+# 	def destroy
+
+# 		@boat = Boat.find_by_id(params[:id])
+# 		@boat.destroy
+# 		redirect_to '/boats'
+
 	end
+
+# 		boat = Boat.find_by_id(params[:id])
+#         bob.destroy
+#         redirect_to '/boats'
+#     end
+
 
 
   def assign
