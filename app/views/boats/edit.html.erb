@@ -7,3 +7,7 @@ Location<%=f.text_field :location %>
 		<div><%=f.file_field :image, class:'form_control' %></div>
 <%= f.submit %>
 <% end %>
+
+<%= form_tag(job_path, method: "delete") do %>
+      <%= submit_tag("Delete Job", class: 'job_delete_button') %>
+  <% end %>

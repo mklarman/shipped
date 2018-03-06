@@ -33,10 +33,10 @@ class BoatsController < ApplicationController
 	end
 
 	def destroy
-		@boat = Boat.find(params[:id])
-		@boat = Boat.destroy
-		redirect_to '/boats'
-	end
+		boat = Boat.find_by_id(params[:id])
+        bob.destroy
+        redirect_to '/boats'
+    end
 
 
     def assign
