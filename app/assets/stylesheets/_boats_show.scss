@@ -1,0 +1,17 @@
+// * {
+//   border: 1px red solid;
+// }
+
+.main__boats {
+  width: 70%;
+  text-align: center;
+  margin: 1vmax auto;
+}
+
+.main__boats__title {
+  @include page_title;
+}
+
+.main__boat__delete {
+  @include button_danger;
+}

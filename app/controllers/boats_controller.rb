@@ -8,8 +8,8 @@ class BoatsController < ApplicationController
 	end
 
 	def create
-		boat = Boat.new(boat_params)
-    if boat.save
+		myboat = Boat.new(boat_params)
+    if myboat.save
       flash[:message] = 'New ship added'
 			redirect_back(fallback_location: root_path)
     else
@@ -26,15 +26,46 @@ class BoatsController < ApplicationController
 
 	end
 	
-	def edit
-		@boat = Boat.find_by_id(params[:id])
-		
+  def edit
+    #  redirects user out if not signed in
+    unless user_signed_in?
+      redirect_to root_path
+    end
+
+    @page_boat = Boat.find_by_id(params[:id])
+    
+
+    
 	end
 
 	def update
-		@boat = Boat.find_by_id(params[:id])
+		current_boat = Boat.find_by_id(params[:id])
 
-		@boat = Boat.update
+    #  checking for rules
+    # unique name
+    given_name = boat_params[:name]
+    boat_that_was_found = Boat.find_by_name(given_name)
+    if (!!boat_that_was_found)
+      if !(boat_that_was_found.id == current_boat.id)
+        flash[:message] = 'Name already exists, must be unique!'
+        redirect_back(fallback_location: root_path)
+        return
+      end
+    end
+    
+    
+
+    if (given_name.length <= 0)
+      flash[:message] = 'Name must have at least 1 character!'
+      redirect_back(fallback_location: root_path)
+      return
+    end
+
+
+    current_boat.update(boat_params)	
+    flash[:message] = 'Ship updated'
+    redirect_back(fallback_location: root_path)
+    
 	end
 
 	def destroy

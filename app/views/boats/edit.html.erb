@@ -1,15 +1,80 @@
-<h1>Edit A Boat</h1>
+<div class="main__boats">
+  <div class="main__boats__title">
+    Boat Control
+  </div>
 
-<%= form_for @boat do |f| %>
-Name<%=f.text_field :name %>
-Capacity<%=f.text_field :capacity %>
-Location<%=f.text_field :location %>
-	<div><%=f.label :image %></div>
-		<div><%=f.file_field :image, class:'form_control' %></div>
-<%= f.submit %>
-<% end %>
+  <div class="main__users__spacer_small">
+  </div>
 
-<%= form_tag(job_path, method: "delete") do %>
-      <%= submit_tag("Delete Boat", class: 'boat_delete_button') %>
+  <%= form_for @page_boat do |f| %>
+    <!-- Name:  -->
+    <%#f.text_field :name %>
+    <!-- Capacity: -->
+    <%#f.text_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
+    <!-- Location:  -->
+    <%#f.text_field :location %>
+
+    <!-- <div> -->
+      <!-- Image: -->
+      <%# f.label :image %>
+    <!-- </div> -->
+
+    <!-- <div> -->
+      <%# f.file_field :image, class:'form_control' %>
+    <!-- </div> -->
+
+    <div class="main__users__boats__form_left">
+        Ship name:
+      </div>
+      <div class="main__users__boats__form_right">
+        <%= f.text_field :name, class: "main__users__boats__all__txt", placeholder: "unique" %>
+      </div>
+      <br>
+
+      <div class="main__users__boats__form_left">
+        Capacity:
+      </div>
+
+      <div class="main__users__boats__form_right">
+        <%= f.number_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
+      </div>
+      <br>
+
+      <div class="main__users__boats__form_left">
+        Location:
+      </div>
+
+      <div class="main__users__boats__form_right">
+        <%= f.text_field :location, class: "main__users__boats__all__txt", placeholder: "standby" %>
+      </div>
+      <br>
+
+      <div class="main__users__boats__form_left">
+        Image:
+      </div>
+
+      <div class="main__users__boats__form_right">
+        <label class="main__users__boats__all__upload">
+          upload...
+          <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
+        </label>
+      </div>
+
+      
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <div>
+        <%= f.submit class: "main__users__boats__submit", value: "Update Boat" %>
+      </div>
+
   <% end %>
 
+  <div class="main__users__spacer_small">
+  </div>
+  <div class="main__users__spacer_small">
+  </div>
+  
+  <%= form_tag(boat_path, method: "delete") do %>
+    <%= submit_tag("Delete Boat", class: 'main__boat__delete') %>
+  <% end %>
+
+</div>
