@@ -42,7 +42,7 @@
 	@include page_title;
 	margin-bottom: 20px;
 	display: block;
-	text-align: left;
+	text-align: center;
 	overflow-wrap: break-word;
 }
 
@@ -61,6 +61,7 @@
   margin-bottom:5px;
   overflow-wrap: break-word;
   width: 100%;
+  text-align: left;
 }
 
 
@@ -75,9 +76,16 @@
 	background-color:$danger_color;
 }
 
-.boat_assign_button, .boat_temp_button{
+.boat_assign_button {
   @include button_general;
   margin: 0.5vmax 0;
+  background-color: rgba($quiet_color, 0.7);
+}
+
+.boat_temp_button {
+  @include button_general;
+  margin: 0.5vmax 0;
+  background-color: rgba($danger_color, 0.7);
 }
 
 .jobshow_field{	

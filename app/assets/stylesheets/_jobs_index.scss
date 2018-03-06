@@ -51,7 +51,7 @@
   background-color: rgba($quiet_color, 0.1);
   border-radius: 1vmax;
   padding: 0.5vmax 1vmax;
-  width: 10vmax;
+  max-width: 10vmax;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
