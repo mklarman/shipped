@@ -15,3 +15,8 @@
 .main__boat__delete {
   @include button_danger;
 }
+
+.main__users__boats__missing {
+  @include our_general_text;
+  color: $danger_color;
+}
