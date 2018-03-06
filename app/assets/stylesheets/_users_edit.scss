@@ -8,6 +8,7 @@
 	background-image: url(../../assets/signup.jpg);
   background-size: cover;
   overflow: hidden;
+  line-height: 1.8vmax;
 }
 
 #edit_form{
@@ -32,17 +33,17 @@
 }
 
 .edit_update{
-	margin-top: 0.1vmax;
+	margin-top: 1vmax;
 	@include button_general;
-	margin-bottom: 0.1vmax;
+	margin-bottom: 0.2vmax;
 	display: block;
 }
 
 .edit_delete{
-  margin-top: -0.1vmax;
-  margin-left: 0;
-	@include button_general;
-	margin-bottom: 0.1vmax;
+  @include button_general;
+  margin-top: 1vmax;
+  margin-left: 0;	
+	margin-bottom: 0.2vmax;
   background-color: $danger_color;
 }
 
