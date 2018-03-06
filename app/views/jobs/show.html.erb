@@ -42,6 +42,12 @@
   <%end%> 
    <div><%= b.name %></div>
    <div><%= b.location %></div>
+   <%= form_for :boat, url: {action: 'unassign', controller: 'boats'} do |r| %>
+        <%= hidden_field_tag "id",  @job.id %>
+        <%= hidden_field_tag "boat_id", b.id %>
+        <div><%= r.submit 'unassign', class: 'boat_temp_button' %></div>
+    <% end %>
+    </div>
  </div>
 <% end %>
 
@@ -59,7 +65,7 @@
     <%else%>
     <div class='jobshow_boats_listed'>           
       <% if boat.avatar_file_name %> 
-        <div><a href="/boats/<%=boat.id%>"><%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%></a></div>
+        <div><a href="/boats/<%=boat.id%>/edit"><%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%></a></div>
       <% else %>
         <!-- <div class= 'boat_photo'></div>  -->
       <% end %> 
