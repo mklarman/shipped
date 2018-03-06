@@ -25,6 +25,7 @@ end
 def destroy
     job = Job.find_by_id(params[:id])
     job.destroy
+    flash[:message] = 'Job deleted successfully'
     redirect_to '/'
 end
   
