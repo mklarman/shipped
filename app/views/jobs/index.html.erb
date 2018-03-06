@@ -19,20 +19,32 @@
         <div id='jobID' class="main__jobs_i__jobs__item__info">
           Job #<%= eJob.id %>
           "<%= eJob.description %>"
-        </div>
-        <div id='jobDescrip' class="main__jobs_i__jobs__item__detail">
-          from: <%= eJob.origin %> / 
-          to: <%= eJob.destination %> / 
-          cost: $<%= number_with_precision(eJob.cost, precision: 2) %>
-        </div>
-        <div class="main__jobs_i__jobs__item__detail">
-          <% eJob.boats.all do |ea_boat| %>
-            <a href="/boats/<%= ea_boat.id %>" class="main__jobs_i__jobs__item__detail__ship">
-              <%= ea_boat.name %>
-            </a>            
-          <% end %>
-          
+        
+          <div id='jobDescrip' class="main__jobs_i__jobs__item__detail">
+            from: <%= eJob.origin %> / 
+            to: <%= eJob.destination %> / 
+            cost: $<%= number_with_precision(eJob.cost, precision: 2) %>
+            <br><br>
+            <div>
+              <span style="vertical-align: middle;">
+                Ships:
+              </span>
+              <% if  (eJob.boats.all.length > 0) %>
+                <% eJob.boats.all.each do |ea_boat| %> 
+                  <div class="main__jobs_i__jobs__item__detail__ship">
+                    <%= ea_boat.name %>
+                  </div>            
+                <% end %>
+              <% else %>
+                <!-- <div class="main__jobs_i__jobs__item__detail"> -->
+                  N/A
+                <!-- </div> -->
+              <% end %>
+            </div>
           </div>
+        </div>
+          
+        
       </a>
       <!-- </div> -->
     <% end %>

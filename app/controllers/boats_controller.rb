@@ -115,6 +115,7 @@ class BoatsController < ApplicationController
   	job = Job.find_by_id(params[:id])
     boat = Boat.find_by_id(params[:boat_id])
     job.boats.delete(boat) if boat
+    flash[:message] = 'This ship is now unassigned'
     redirect_to "/jobs/#{job.id}"
   end 	
 

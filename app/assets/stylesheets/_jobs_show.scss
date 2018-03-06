@@ -1,16 +1,20 @@
 #jobshow_wrapper{
 	width:100%;
 	height:auto;
-	font-family: main_font;
+  font-family: main_font;
+  text-align: center;
 }
 
 .jobshow_column{
-	width: 35%;
-	margin-left:5vw;
+	width: 45%;
+  margin-left:1%;
+  margin-right:1%;
 	margin-top:10vh;
-  float: left;
-  vertical-align: bottom;
+  // float: left;
+  vertical-align: top;
   text-align: center;
+  display: inline-block;
+  position: relative;
 }
 
 #job_edit_form{
@@ -64,7 +68,7 @@
 	@include button_general;
 	margin-right:5px;
 	float: left;
-	display: inline-block;
+	// display: inline-block;
 }
 
 .job_delete_button{
@@ -72,7 +76,8 @@
 }
 
 .boat_assign_button, .boat_temp_button{
-	@include button_general;
+  @include button_general;
+  margin: 0.5vmax 0;
 }
 
 .jobshow_field{	
@@ -105,6 +110,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @include our_general_text(1.5vmax);
   // background-color: red;
   // border: 1px red solid;
 }
