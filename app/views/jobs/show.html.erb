@@ -2,8 +2,9 @@
     <% if @job != nil%>
       <div class='jobshow_column'>
         <div id='jobshow_title' >Job Info</div>
-        <div class='jobshow_info'>Description: <%=@job.description%></div> 
-        <div class='jobshow_info'>Origin: <%=@job.origin%></div> 
+        <div class='jobshow_info'>Description: <%=@job.description%></div>
+        <br>
+        <div class='jobshow_info'>Origin: <%=@job.origin%></div>
         <div class='jobshow_info'>Destination: <%=@job.destination%></div> 
         <div class='jobshow_info'>Cost: $<%=@job.cost%></div> 
         <div class='jobshow_info'>Containers: <%=@job.containers%></div> 
@@ -13,20 +14,23 @@
         </div>
         <div id='job_edit_form'>
           <%=form_for @job do |j|%>
-            <h2>Update Job</h2>
+            <div class="main__jobs_i__title" style="margin-bottom:1vmax; margin-left: 1vmax;">Update Job</div>
             <div class='jobshow_info'>Description: </div>
-            <div ><%=j.text_area :description, class: 'jobshow_field' %></div>
+            <div><%=j.text_area :description, class: 'jobshow_field' %></div>
+            
             <div class='jobshow_info'>Origin: </div>
             <div><%=j.text_field :origin, class: 'jobshow_field'%></div>
             <div class='jobshow_info'>Destination: </div>
             <div ><%=j.text_field :destination, class: 'jobshow_field'%></div>
+            <div class='jobshow_info'>Cost: </div>
             <div><%=j.text_field :cost, class: 'jobshow_field' %></div>
+            <div class='jobshow_info'>Containers: </div>
             <div ><%=j.text_field :containers, class: 'jobshow_field'%></div>
-            <div><%= j.submit'update', class: 'job_update_button'%></div>
+            <div><%= j.submit 'Update', class: 'job_update_button'%></div>
           <%end%>
   
           <%= form_tag(job_path, method: "delete") do %>
-              <%= submit_tag("Delete Job", class: 'job_delete_button') %>
+              <%= submit_tag("Delete job", class: 'job_delete_button') %>
           <% end %>
         </div>
       </div>
@@ -49,7 +53,7 @@
             <%= form_for :boat, url: {action: 'unassign', controller: 'boats'} do |r| %>
                   <%= hidden_field_tag "id",  @job.id %>
                   <%= hidden_field_tag "boat_id", b.id %>
-                  <div><%= r.submit 'unassign', class: 'boat_temp_button' %></div>
+                  <div><%= r.submit 'Unassign', class: 'boat_temp_button' %></div>
             <% end %>
             </div>
           <% end %>
@@ -92,7 +96,7 @@
                   <%= hidden_field_tag "id",  @job.id %>
                   <%= hidden_field_tag "boat_id", boat.id %>
                   <div>
-                    <%= r.submit 'assign', class: 'boat_assign_button' %>
+                    <%= r.submit 'Assign', class: 'boat_assign_button' %>
                   </div>
                 <%end%>
               </div>
