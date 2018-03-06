@@ -1,5 +1,3 @@
-console.log('hello');
-
 window.onload = function(){
 var gear = document.getElementById('edit_gear');
 var edit = document.getElementById('job_edit_form');

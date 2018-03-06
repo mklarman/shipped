@@ -10,7 +10,6 @@
   margin-left:1%;
   margin-right:1%;
 	margin-top:10vh;
-  // float: left;
   vertical-align: top;
   text-align: center;
   display: inline-block;
@@ -69,7 +68,6 @@
 	@include button_general;
 	margin-right:5px;
 	float: left;
-	// display: inline-block;
 }
 
 .job_delete_button{
@@ -106,7 +104,6 @@
 .jobshow_boats_assigned{
 	margin-left:10px;
 	text-align:center;
-	// width:100px;
 	margin-top:20px;
 	display:inline-block;
 	margin-bottom: 20px;
@@ -119,8 +116,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     @include our_general_text(1.5vmax);
-  // background-color: red;
-  // border: 1px red solid;
 }
 
 .jobshow_boats_listed{
@@ -128,15 +123,12 @@
 	text-align:center;
 	margin-top:20px;
 	display:inline-block;
-
 	margin-bottom: 50px;
-	// float:left;
   @include our_general_text;
   padding: 1vmax;
   border-radius: 1vmax;
   margin-top: 2vmax;
   width: 35%;
-
 }
 
 .jobshow_boats_listed:hover{
