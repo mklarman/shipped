@@ -39,6 +39,7 @@
 	margin-bottom: 20px;
 	display: block;
 	text-align: left;
+	overflow-wrap: break-word;
 }
 
 .jobshow_info {
@@ -70,7 +71,7 @@
 	background-color:$danger_color;
 }
 
-.boat_assign_button{
+.boat_assign_button, .boat_temp_button{
 	@include button_general;
 }
 
@@ -92,11 +93,11 @@
 .jobshow_boats_assigned{
 	margin-left:10px;
 	text-align:center;
-	width:100px;
+	// width:100px;
 	margin-top:20px;
 	display:inline-block;
-	margin-bottom: 50px;
-	// float:left;
+	margin-bottom: 20px;
+	@include our_general_text;
 }
 
 .jobshow_boats_assigned_name {
@@ -113,6 +114,7 @@
 	text-align:center;
 	margin-top:20px;
 	display:inline-block;
+
 	margin-bottom: 50px;
 	// float:left;
   @include our_general_text;
@@ -120,7 +122,7 @@
   border-radius: 1vmax;
   margin-top: 2vmax;
   width: 35%;
-    
+
 }
 
 .jobshow_boats_listed:hover{

@@ -109,7 +109,14 @@ class BoatsController < ApplicationController
       # redirect_to "/jobs/#{@job.id}"
       redirect_back(fallback_location: root_path)
     end	
-  end	
+  end
+
+  def unassign
+  	job = Job.find_by_id(params[:id])
+    boat = Boat.find_by_id(params[:boat_id])
+    job.boats.delete(boat) if boat
+    redirect_to "/jobs/#{job.id}"
+  end 	
 
  private
 
