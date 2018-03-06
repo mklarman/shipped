@@ -15,40 +15,10 @@
 
 .main__users__title {
   @include page_title;
+  margin-top: 0.5vmax;
 }
 
-.main__users__boats {
-  display: inline-block;
-  position: relative;
-  width: 48%;
-  vertical-align: top;
-}
-
-.main__users__boats__add {
-  @include button_add;
-  background-color: $quiet_color;
-}
-
-.main__users__boats__add:active {
-  @include button_general_pressed;
-}
-
-.main__users__boats__item {
-  @include our_general_text;
-}
-
-.main__users__jobs__item {
-  @include our_general_text;
-}
-
-.main__users__boats__item_detail {
-  @include light_text;
-}
-
-.main__users__jobs__item_detail {
-  @include light_text;
-}
-
+.main__users__boats,
 .main__users__jobs {
   display: inline-block;
   position: relative;
@@ -56,13 +26,100 @@
   vertical-align: top;
 }
 
-.main__users__boats__form {
+.main__users__boats__btn_add,
+.main__users__jobs__btn_add {
+  @include button_add;
+  background-color: $quiet_color;
   display: inline-block;
+  margin-left: 1vmax;
+}
+
+.main__users__boats__btn_add:active,
+.main__users__jobs__btn_add:active {
+  @include button_general_pressed;
+}
+
+// .main__users__boats__btn_remove_start {
+//   @include button_add(1.7vmax);
+//   background-color: rgba($danger_color, 0.5);
+//   text-align: center;
+//   display: block;
+//   margin: 1vmax;
+// }
+
+.main__users__boats__item,
+.main__users__jobs__item {
+  @include our_general_text;
+  display: block;
+  // overflow: hidden;
+  text-align: left;
+  // background-color: rgba(128, 0, 128, 0.158);
+  padding: 1vmax;
+  border-radius: 1vmax;
+  margin-top: 2vmax;
+}
+
+.main__users__boats__item:hover,
+.main__users__jobs__item:hover {
+  background-color: rgba($quiet_color, 0.1);
+}
+
+.main__users__boats__item_image {
+  height: auto;
+  min-width: 20vmax;
+  max-width: 20vmax;
+  max-height: 20vmax;
+  margin: 0.5vmax;
+  display: inline-block;
+  // border-radius: 0.5vmax;
+  vertical-align: text-top;
+}
+
+.main__users__boats__item_info {
+  @include our_general_text;
+  display: inline-block;
+  text-align: left;
+  vertical-align: text-top;
+  margin: 0.5vmax 0;
+
+  width: 50%;
+}
+
+.main__users__jobs__item_info {
+  @include our_general_text;
+  display: inline-block;
+  text-align: left;
+  vertical-align: text-top;
+  margin: 0.5vmax;
+  margin-left: 0;
+  margin-bottom: 0vmax;
+
+  width: 100%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main__users__boats__item_detail,
+.main__users__jobs__item_detail {
+  @include light_text;
+  display: block;
+  text-align: left;
+  // vertical-align: top;
+  // margin: 1vmax;
+  margin: 0.5vmax 0.5vmax;
+  margin-left: 0;
+  
+}
+
+.main__users__boats__form {
+  display: none;
   position: relative;
 
   width: auto;
   text-align: left;
-  background-color: rgba($quiet_color, 0.2);
+  background-color: rgba($quiet_color, 0.1);
   padding: 1vmax;
   border-radius: 1vmax;
   margin: 1vmax;
@@ -88,6 +145,19 @@
   height: 2.2vmax;
   text-align: left;
   margin-top: 0.5vmax;
+  margin-left: 0.5vmax;
+}
+
+// remove arrows
+.main__users input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// remove arrows
+.main__users input[type=number]::-webkit-inner-spin-button,
+.main__users input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .main__users__boats__all__txt {
@@ -130,23 +200,43 @@
   @include button_general_pressed;
 }
 
-.main__users__jobs__add {
-  @include button_add;
-  background-color: $quiet_color;
+.main__users__boats__item_delete_start {
+  text-align: left;
+  display: none;
+  position: absolute;
+  width: 100%;
 }
 
-.main__users__jobs__add:active {
+.main__users__boats__item_delete_end {
+  text-align: right;
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+
+.main__users__boats__item_delete {
+  @include button_general;
+  background-color: $quiet_color;
+  margin-top: 0.5vmax;
+}
+
+.main__users__boats__item_confirm {
+  @include button_general;
+  background-color: $danger_color;
+  margin-top: 0.5vmax;
+}
+
+.main__users__boats__item_cancel {
+  @include button_general;
+  background-color: $quiet_color;
+  margin-top: 0.5vmax;
+}
+
+.main__users__boats__item_delete:active,
+.main__users__boats__item_confirm:active,
+.main__users__boats__item_cancel:active {
   @include button_general_pressed;
 }
 
-// .main__users__boats__form_left__item {
-//   text-align: right;
-// }
 
-// .main__users__boats__form_right__item {
-//   text-align: left;
-// }
 
-// * {
-//   border: 1px red solid;
-// }

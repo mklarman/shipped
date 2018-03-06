@@ -19,7 +19,7 @@ $bright_color: white;
   outline-width: 0;
 }
 
-@mixin our_general_text ($my_size: 1.5vmax) {
+@mixin our_general_text ($my_size: 1.6vmax) {
   display: inline-block;
   position: relative;
   text-decoration: none;
@@ -50,7 +50,7 @@ $bright_color: white;
   outline-width: 0;  
 }
 
-@mixin light_text ($my_size: 1.2vmax) {
+@mixin light_text ($my_size: 1.3vmax) {
   display: inline-block;
   position: relative;
 
@@ -88,7 +88,7 @@ $bright_color: white;
   outline-width: 0;
 }
 
-@mixin button_add ($my_size: 3vmax){
+@mixin button_add ($my_size: 2.1vmax){
   display: inline-block;
   position: relative;
 

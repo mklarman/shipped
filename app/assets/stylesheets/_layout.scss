@@ -13,7 +13,7 @@ body {
   display: block;
   position: fixed;
   right: 0;
-  bottom: 2vmax;
+  top: 3.5vmax;
   left: 0;
   width: 20vmax;
   padding: 1vmax 2vmax;
@@ -53,7 +53,10 @@ body {
 // }
 
 .spacer {
-  height: 2.1vmax;
+  height: 3vmax;
+  display: block;
+  position: relative;
+  // background-color: purple;
 }
 
 .nav_left {
@@ -70,10 +73,15 @@ body {
 .nav__links {
   @include our_general_text;
   color: $bright_color;
-  margin: 0.1vmax;
+  color: rgba($bright_color, 0.8);
+  margin: 0.5vmax;
   margin-right: 1vmax;
   margin-left: 1vmax;
   padding: 0.2vmax;
+}
+
+.nav__links:hover {
+  color: $bright_color;
 }
 
 .nav__links:active {

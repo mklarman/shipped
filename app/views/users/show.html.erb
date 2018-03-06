@@ -5,61 +5,56 @@
     <div class="main__users__boats">
       <!-- show boats and create boat button and jobs  -->
       <div class="main__users__title">
-        Ships
-      </div>
-
-      <div class="main__users__spacer_small">
+        Your Ships
       </div>
 
       <% if (user_signed_in?) %>
 
         <% if (current_user.id == @page_user.id) %>
           <!-- if page user matches logged in user, allow adding boats -->
-          <div class="main__users__boats__add">
-            +
+          <div class="main__users__boats__btn_add">+</div>
+
+          <div class="main__users__spacer_small">
           </div>
 
           <%= form_for Boat.new, :html => {:class => 'main__users__boats__form'} do |f| %>
             <!-- <div class="main__users__boats__form_left"> -->
-              <div class="main__users__boats__form_left">
-                Ship name:
-              </div>
-              <div class="main__users__boats__form_right">
-                  <%= f.text_field :name, class: "main__users__boats__all__txt" %>
-              </div>
-              <br>
+            <div class="main__users__boats__form_left">
+              Ship name:
+            </div>
+            <div class="main__users__boats__form_right">
+              <%= f.text_field :name, class: "main__users__boats__all__txt", placeholder: "unique" %>
+            </div>
+            <br>
 
-              <div class="main__users__boats__form_left">
-                Capacity:
-              </div>
+            <div class="main__users__boats__form_left">
+              Capacity:
+            </div>
 
-              <div class="main__users__boats__form_right">
-                <%= f.number_field :capacity, class: "main__users__boats__all__txt" %>
-              </div>
-              <br>
+            <div class="main__users__boats__form_right">
+              <%= f.number_field :capacity, class: "main__users__boats__all__txt", placeholder: "# of containers" %>
+            </div>
+            <br>
 
-              <div class="main__users__boats__form_left">
-                Location:
-              </div>
+            <div class="main__users__boats__form_left">
+              Location:
+            </div>
 
-              <div class="main__users__boats__form_right">
-                <%= f.text_field :location, class: "main__users__boats__all__txt" %>
-              </div>
-              <br>
+            <div class="main__users__boats__form_right">
+              <%= f.text_field :location, class: "main__users__boats__all__txt", placeholder: "standby" %>
+            </div>
+            <br>
 
-              <div class="main__users__boats__form_left">
-                Image:
-              </div>
+            <div class="main__users__boats__form_left">
+              Image:
+            </div>
 
-              <div class="main__users__boats__form_right">
-                <label class="main__users__boats__all__upload">
-                  upload...
-                  <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
-                </label>
-              </div>
-
-            <!-- </div> -->
-
+            <div class="main__users__boats__form_right">
+              <label class="main__users__boats__all__upload">
+                upload...
+                <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
+              </label>
+            </div>
 
             <div>
               <%= f.hidden_field :user_id, value: current_user.id %>
@@ -73,35 +68,55 @@
 
       <% @page_user.boats.reverse.each do |ea_boat| %>        
         
-        <a href="/boats/<%= ea_boat.id %>" class="main__users__boats__item">
-          <div>
-            <%= ea_boat.name%>
-          </div>
-          <div class="main__users__boats__item_detail">
-            boat #<%= ea_boat.id%> / 
-            capacity: <%= ea_boat.capacity%> / 
-            location: <%= ea_boat.location%><br>
-            <% if ea_boat.avatar_file_name %>
-              <%= image_tag ea_boat.avatar.url(:medium) %>
-            <% end %>
+        <a href="/boats/<%= ea_boat.id %>" class="main__users__boats__item" data-boatid="<%= ea_boat.id %>">
+          <% if (!!ea_boat.avatar_file_name) %>
+            <%= image_tag ea_boat.avatar.url(:medium), :class => "main__users__boats__item_image" %>
+          <% else %>
+            <div class="main__users__boats__item_image"></div>
+          <% end %>
+          <div class="main__users__boats__item_info">
+            Ship #<%= ea_boat.id%> "<%= ea_boat.name %>"
             
+            <br>
+            <div class="main__users__boats__item_detail">
+              
+              capacity: <%= ea_boat.capacity %>
+              <br> 
+              location: <%= ea_boat.location %>
+            </div>
           </div>
         </a> 
 
-        <br>
+        <div class="main__users__boats__item_delete_start" data-boatid="<%= ea_boat.id %>">
+          <div class="main__users__boats__item_delete" data-boatid="<%= ea_boat.id %>">
+            Delete
+          </div>
+        </div>
+
+        <div class="main__users__boats__item_delete_end" data-boatid="<%= ea_boat.id %>">
+          <!-- <div class="main__users__boats__item_confirm">
+            Delete confirm
+          </div> -->
+          <%= link_to "Delete confirm", boat_path(ea_boat.id), class: "main__users__boats__item_confirm", method: :delete, :data => { :'data-boatid' => ea_boat.id.to_s } %>
+          
+          <div class="main__users__boats__item_cancel" data-boatid="<%= ea_boat.id %>">
+            Cancel
+          </div>
+        </div>
+
         <br>
       <% end %>
-    
-
-
-    
-      
+      <br><br><br><br><br>
     </div>
 
     <div class="main__users__jobs">
       <div class="main__users__title">
-        Jobs
+        Your Jobs
       </div>
+
+      <% if (current_user.id == @page_user.id) %>
+        <a href="/jobs" class="main__users__jobs__btn_add">+</a>
+      <% end %>
 
       <div class="main__users__spacer_small">
       </div>
@@ -109,28 +124,32 @@
       <% @page_user_jobs.reverse.each do |ea_job| %>
         <a href="/jobs/<%= ea_job.id %>" class="main__users__jobs__item">
           <div>        
-            <div>
-              <%= ea_job.description %>  
+            <div class="main__users__jobs__item_info">
+              Job #<%= ea_job.id %> "<%= ea_job.description %>"
             </div>
             <div class="main__users__jobs__item_detail">
-              job #<%= ea_job.id %> / 
+              
               from: <%= ea_job.origin %> / 
-              to: <%= ea_job.destination %>
+              to: <%= ea_job.destination %> / 
               cost: $<%= ea_job.cost %>  
             </div>
           </div>
         </a>
 
-        <br>
+        
+
         <br>
       <% end %>
-      <a href="/jobs" class="main__users__jobs__add">
-        +
-      </a>
+      
     </div>
 
   <% else %>
     This account doesn't exist
+
+    <!-- <br><br> -->
+    <%# params[:controller] %>
+    <%# params[:action] %>
+    <%# params[:id] %>
   <% end %>
 </div>
 
