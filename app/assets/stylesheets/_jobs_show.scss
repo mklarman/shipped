@@ -5,24 +5,38 @@
 }
 
 .jobshow_column{
-	width: 30%;
-	margin-left:180px;
-	margin-top:50px;
+	width: 35%;
+	margin-left:10vw;
+	margin-top:10vh;
 	float: left;
 }
 
 #job_edit_form{
-	display:none;
+  @include our_general_text;
+  text-align: left;
+  padding: 1vmax;
+  padding-bottom: 4vmax;
+  border-radius: 1vmax;
+  margin-top: 2vmax;
+  background-color: rgba($quiet_color, 0.1);
+  display:none;
 }
 
-#boat_photo{
-	width:100px;
-	height:100px;
+.boat_photo{
+  height: auto;
+  min-width: 10vmax;
+  max-width: 10vmax;
+  max-height: 10vmax;
+  margin: 0.5vmax;
+  display: inline-block;
+  vertical-align: text-top;
 }
 
 #jobshow_title{
 	@include page_title;
 	margin-bottom: 20px;
+	display: block;
+	text-align: left;
 }
 
 .jobshow_info{
@@ -43,7 +57,7 @@
 
 .job_update_button, .job_delete_button{
 	@include button_general;
-	margin-left:5px;
+	margin-right:5px;
 	float: left;
 	display: inline-block;
 }
@@ -56,8 +70,7 @@
 	@include button_general;
 }
 
-.jobshow_field{
-	
+.jobshow_field{	
   width:100%;	
   position: relative;
   font-family: main_font;
@@ -72,7 +85,7 @@
   margin-bottom:5px;
 }
 
-.jobshow_boats_assigned, .jobshow_boats_listed{
+.jobshow_boats_assigned{
 	margin-left:10px;
 	text-align:center;
 	width:100px;
@@ -82,12 +95,30 @@
 	// float:left;
 }
 
+.jobshow_boats_listed{
+	margin-left:10px;
+	text-align:center;
+	margin-top:20px;
+	display:inline-block;
+	margin-bottom: 50px;
+	float:left;
+    @include our_general_text;
+    padding: 1vmax;
+    border-radius: 1vmax;
+    margin-top: 2vmax;
+    
+}
+
+.jobshow_boats_listed:hover{
+	background-color: rgba($quiet_color, 0.1);
+}
+
 #edit_gear{
 	margin-bottom:30px;
 }
 
 #edit_gear:active{
-@include button_general_pressed 
+	@include button_general_pressed 
 }
 
 

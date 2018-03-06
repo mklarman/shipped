@@ -11,5 +11,4 @@ gear.addEventListener('click', function(){
 		edit.style.display=''
 	}
 })
-
 }

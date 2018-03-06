@@ -35,7 +35,11 @@
   <div id='jobshow_title'>This job has been assigned to:</div>
 <% @job.boats.each do |b| %>
 <div class='jobshow_boats_assigned'>
-   <div id='boat_photo'><%= image_tag b.avatar.url(:medium) %></div>
+  <% if b.avatar_file_name %>
+   <div><%= image_tag b.avatar.url(:medium), :class => 'boat_photo' %></div>
+  <%else%>
+   <div class= 'boat_photo'></div> 
+  <%end%> 
    <div><%= b.name %></div>
    <div><%= b.location %></div>
  </div>
@@ -44,23 +48,29 @@
 <hr>
 <div id='jobshow_title'>Assign a Boat to this Job: </div>
 
-
+ 
 <%if @job.boats == Boat.all %>
   <h2>There is no current available boats</h2>
-<%else%>  
-  <% @boats.each do |boat| %>
+<%else%>
 
+  <% @boats.each do |boat| %> 
+   
     <%if @job.boats.find_by_id(boat.id)%>
     <%else%>
-      <div class='jobshow_boats_listed'>
-      <div id='boat_photo'><a href="/boats/<%=boat.id%>"><%= image_tag boat.avatar.url(:medium) %><br>   
-      <%=boat.name%></a></div>    
+    <div class='jobshow_boats_listed'>           
+      <% if boat.avatar_file_name %> 
+        <div><a href="/boats/<%=boat.id%>"><%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%></a></div>
+      <% else %>
+        <!-- <div class= 'boat_photo'></div>  -->
+      <% end %> 
+      <div><%=boat.name%></div>    
       <%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
         <%= hidden_field_tag "id",  @job.id %>
         <%= hidden_field_tag "boat_id", boat.id %>
-        <div><%= r.submit 'assign', class: 'boat_assign_button' %>
-        <%end%></div>
-      </div>
+        <div><%= r.submit 'assign', class: 'boat_assign_button' %></div>
+        </div>
+        <%end%>
+      
     <% end %>
     <%end%> 
 <%end%>   
@@ -75,5 +85,5 @@
 
 </div>
 
-<script type="text/javascript" src="javascripts/job_show.js"></script>
+<script type="text/javascript" src="/assets/job_show.js"></script>
 

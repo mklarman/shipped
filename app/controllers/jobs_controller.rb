@@ -10,7 +10,7 @@ def update
 		flash[:message] = 'All Jobs Must Cost Min $100'
 		redirect_to "/jobs/#{job.id}"
 	elsif (job_params[:description].length < 20)
-		flash[:message] = 'You description need to have at least 20 charactors'
+		flash[:message] = 'You description need to have at least 20 characters'
 		redirect_to "/jobs/#{job.id}"	 	
 	else	
 		if job.update(job_params)	
