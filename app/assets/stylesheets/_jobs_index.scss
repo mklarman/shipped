@@ -1,78 +1,181 @@
+// * {
+//   border: red 1px solid;
+// }
 
-
-body{
-	background-color: white;
+.main__jobs_i {
+  text-align: center;
+  width: 98%;
+  margin: 1%;
+  vertical-align: top;
 }
 
-
-#availJobs{
-	height: 100px;
-	width: 400px;
-	font-size: 25px;
-	margin-top: 50px;
-	margin-bottom: 10px;
-
+.main__jobs_i__title,
+.main__jobs_i__newjob__title {
+  @include page_title;  
 }
 
-#jobsList{
-	height: 50px;
-	width: 300px;
-	font-size: 25px;
-	margin-top: 3px;
-	margin-bottom: 3px;
-
+.main__jobs_i__jobs,
+.main__jobs_i__newjob {
+  width: 49%;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
 }
 
-#formForJobs{
-	height: 200px;
-	width: 500px;
-	margin-top: 20px;
-	font-size: 25px;
-	margin-left: 700px;
-	color: blue;
-	margin-top: 50px;
+.main__jobs_i__jobs__item {
+  text-decoration: none;
+  display: block;
+  border-radius: 1vmax;
+  padding: 1vmax;
+  text-align: left;
 }
 
-#jobHeading{
-	height: 50px;
-	width: 400px;
-	margin-left: 650px;
-	font-size: 25px;
-	margin-top: -350px;
-	text-align: center;
+.main__jobs_i__jobs__item__info {
+  @include our_general_text;
+  text-align: left;
 }
 
-
-#jobID{
-	height: 50px;
-	width: 200px;
-	margin-top: -30px;
-	margin-left: 307px;
-
+.main__jobs_i__jobs__item__detail {
+  @include light_text;
+  display: block;
+  text-align: left;
+  margin: 0.5vmax 0.5vmax;
+  margin-left: 0;
 }
 
-.field1{
-	text-align: right;
-	height: 35px;
-	width: 200px;
+.main__jobs_i__jobs__item__detail__ship {
+  @include light_text;
+  background-color: rgba($quiet_color, 0.1);
+  border-radius: 0.5vmax;
 }
 
-#formatJob{
-	height: 200px;
-	width: 200px;
-	margin-left: 200px;
-	margin-top: -207px;
+.main__jobs_i__spacer {
+  @include large_spacer;
 }
 
-.boxFormat{
-	margin-top: 6px;
-	margin-bottom: 6px;
+.main__jobs_i__jobs__item:hover {
+  background-color: rgba($quiet_color, 0.1);
 }
 
-#jobSubmit{
-	height: 25px;
-	width: 100px;
-	margin-left: 200px;
+.main__jobs_i__newjob__form {
+  position: relative;
+
+  width: auto;
+  text-align: left;
+  background-color: rgba($quiet_color, 0.1);
+  padding: 1vmax;
+  border-radius: 1vmax;
+  // margin: 1vmax;
+  margin: 0 1vmax;
 }
+
+.main__jobs_i__newjob__form_left {
+  @include our_general_text;
+  width: 15vmax;
+  display: inline-block;
+  position: relative;
+  height: 2.2vmax;
+  text-align: right;
+  // border: 1px solid purple;
+  vertical-align: top;
+  margin-top: 1vmax;
+}
+
+.main__jobs_i__newjob__form_right {
+  width: 23vmax;
+  display: inline-block;
+  position: relative;
+  // background-color: purple;
+  height: 2.2vmax;
+  text-align: left;
+  margin-top: 0.5vmax;
+  margin-left: 0.5vmax;
+}
+
+.main__jobs_i__newjob__all_txt {
+  @include regular_textfield;
+}
+
+.main__jobs_i__newjob__form__submit {
+  @include button_general;
+  display: block;
+  margin: 0.5vmax auto;
+}
+
+// body{
+// 	background-color: white;
+// }
+
+
+
+// #availJobs{
+// 	height: 100px;
+// 	width: 400px;
+// 	font-size: 25px;
+// 	margin-top: 50px;
+// 	margin-bottom: 10px;
+
+// }
+
+// #jobsList{
+// 	height: 50px;
+// 	width: 300px;
+// 	font-size: 25px;
+// 	margin-top: 3px;
+// 	margin-bottom: 3px;
+
+// }
+
+// #formForJobs{
+// 	height: 200px;
+// 	width: 500px;
+// 	margin-top: 20px;
+// 	font-size: 25px;
+// 	margin-left: 700px;
+// 	color: blue;
+// 	margin-top: 50px;
+// }
+
+// #jobHeading{
+// 	height: 50px;
+// 	width: 400px;
+// 	margin-left: 650px;
+// 	font-size: 25px;
+// 	margin-top: -350px;
+// 	text-align: center;
+// }
+
+
+// #jobID{
+// 	height: 50px;
+// 	width: 200px;
+// 	margin-top: -30px;
+// 	margin-left: 307px;
+
+// }
+
+// .field1{
+// 	text-align: right;
+// 	height: 35px;
+// 	width: 200px;
+// }
+
+// #formatJob{
+// 	height: 200px;
+// 	width: 200px;
+// 	margin-left: 200px;
+// 	margin-top: -207px;
+// }
+
+// .boxFormat{
+// 	margin-top: 6px;
+// 	margin-bottom: 6px;
+// }
+
+// #jobSubmit{
+// 	height: 25px;
+// 	width: 100px;
+// 	margin-left: 200px;
+// }
 
 

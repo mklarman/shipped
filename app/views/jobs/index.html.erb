@@ -1,41 +1,106 @@
-<div id='availJobs'>
-  <h2>List Of Available Jobs</h2>
-</div>
+<div class="main__jobs_i">
+  
 
-  <% Job.all.reverse.each do |eJob| %>
-    <div id='jobsList'>
-      <a href="/jobs/<%= eJob.id %>">
-          <div id='jobDescrip'>
-            <%= eJob.description %>
-          </div>
-          <div id='jobID'>
-            Job ID: 00000<%= eJob.id %>
+  
+
+  <div class="main__jobs_i__jobs">
+
+    <div id='availJobs' class="main__jobs_i__title">
+      All Available Jobs
+    </div>
+
+    <div class="main__jobs_i__spacer">
+    </div>
+
+    <% Job.all.reverse.each do |eJob| %>
+      <!-- <div id='jobsList'> -->
+      <a href="/jobs/<%= eJob.id %>" class="main__jobs_i__jobs__item">
+          
+        <div id='jobID' class="main__jobs_i__jobs__item__info">
+          Job #<%= eJob.id %>
+          "<%= eJob.description %>"
+        </div>
+        <div id='jobDescrip' class="main__jobs_i__jobs__item__detail">
+          from: <%= eJob.origin %> / 
+          to: <%= eJob.destination %> / 
+          cost: $<%= eJob.cost %>
+        </div>
+        <div class="main__jobs_i__jobs__item__detail">
+          <% eJob.boats.all do |ea_boat| %>
+            <a href="/boats/<%= ea_boat.id %>" class="main__jobs_i__jobs__item__detail__ship">
+              <%= ea_boat.name %>
+            </a>            
+          <% end %>
+          
           </div>
       </a>
-    </div>
-  <% end %>
-
-
-
-  <div id='jobHeading'>
-    <h2>NEW JOB FORM</h2>
-  </div>  
-
-<div id='formForJobs'>
-  <%= form_for Job.new do |f| %>
-    <div class='field1'>Job Description:</div>
-    <div class='field1'>Starting From:</div>
-    <div class='field1'>Destination:</div>
-    <div class='field1'>Cost:</div>
-    <div class='field1'>Containers:</div>
-  <div id='jobSubmit'><%= f.submit %></div>
-  <div id='formatJob'>
-    <div class='boxFormat'><%= f.text_field :description %></div>
-    <div class='boxFormat'><%= f.text_field :origin %></div>
-    <div class='boxFormat'><%= f.text_field :destination %></div>
-    <div class='boxFormat'><%= f.text_field :cost %></div>
-    <div class='boxFormat'><%= f.number_field :containers %></div>
- <% end %>
+      <!-- </div> -->
+    <% end %>
+    
   </div>
+
+  <div class="main__jobs_i__newjob">
+    <div id='jobHeading' class="main__jobs_i__newjob__title">
+      Add a New Job
+    </div>  
+
+    <div class="main__jobs_i__spacer">
+    </div>
+
+      <!-- <div id='formForJobs'> -->
+      <%= form_for Job.new, :html => {:class => 'main__jobs_i__newjob__form'} do |f| %>
+
+        <div class='main__jobs_i__newjob__form_left field1'>
+          Job Description:
+        </div>
+        <div class='main__jobs_i__newjob__form_right boxFormat'>
+          <%= f.text_field :description, class: "main__jobs_i__newjob__all_txt", placeholder: "20+ chararacters" %>
+        </div>
+        <br>
+
+        <div class='main__jobs_i__newjob__form_left field1'>
+          Starting From:
+        </div>
+        <div class='main__jobs_i__newjob__form_right boxFormat'>
+          <%= f.text_field :origin, class: "main__jobs_i__newjob__all_txt", placeholder: "location" %>
+        </div>
+        <br>
+
+        <div class='main__jobs_i__newjob__form_left field1'>
+          Destination:
+        </div>
+        <div class='main__jobs_i__newjob__form_right boxFormat'>
+          <%= f.text_field :destination, class: "main__jobs_i__newjob__all_txt", placeholder: "location" %>
+        </div>
+        <br>
+
+        <div class='main__jobs_i__newjob__form_left field1'>
+          Cost:
+        </div>
+        <div class='main__jobs_i__newjob__form_right boxFormat'>
+          <%= f.text_field :cost, class: "main__jobs_i__newjob__all_txt", placeholder: "USD" %>
+        </div>
+        <br>
+
+        <div class='main__jobs_i__newjob__form_left field1'>
+          Containers:
+        </div>
+        <div class='main__jobs_i__newjob__form_right boxFormat'>
+          <%= f.text_field :containers, class: "main__jobs_i__newjob__all_txt", placeholder: "number" %>
+        </div>
+        <br>
+
+        <div id='jobSubmit'>
+          <%= f.submit class: "main__jobs_i__newjob__form__submit", value: "Add a new job"%>
+        </div>
+      
+
+      <% end %>
+
+      
+    </div>
+
+  </div>
+
 </div>
 

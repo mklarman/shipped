@@ -122,3 +122,10 @@ $bright_color: white;
   transform: translateY(0.1vmax);
 }
 
+@mixin large_spacer ($my_size: 1.8vmax) {
+  position: relative;
+  display: block;
+  height: $my_size;
+  width: $my_size;
+  margin: 0 auto;
+}
