@@ -7,6 +7,35 @@ body {
   margin: 0;
 }
 
+.alert {
+  @include light_text;
+
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 2vmax;
+  left: 0;
+  width: 20vmax;
+  padding: 1vmax 2vmax;
+  margin: 0 auto;
+  z-index: 1;
+  background-color: $quiet_color;
+  color: $bright_color;
+  text-align: center;
+  border-radius: 1vmax;
+
+  animation: fadeinout 5s;  
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes fadeinout {
+  0% {opacity: 0; visibility: visible;}
+  20% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0; visibility: hidden;}
+} 
+
 .nav {
   width: 100%;
   position: fixed;
@@ -19,9 +48,9 @@ body {
   // border-bottom: $quiet_color solid 1px;
 }
 
-.main {
+// .main {
   // border: 1px red solid;
-}
+// }
 
 .spacer {
   height: 2.1vmax;
