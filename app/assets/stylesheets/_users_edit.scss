@@ -1,15 +1,22 @@
 #edit_wrapper{
-	width:100%;
-	height:auto;
+	position:absolute;
+    width:100%;
+	height: 100vh;   
 	font-family: main_font;
+	background-image: url(../../assets/signup.jpg);
+    background-size: cover;
+    overflow: hidden;
+
 }
 
 #edit_form{
 	background-color: rgba(225,225,225, 0.7);
-	width:45%;
-	margin: 0px auto;
-	padding: 5%;
+	width:20%;
+	margin: 100px auto;
+	padding: 4%;
 	border-radius: 2px;
+	height: 400px;
+
 }
 
 #edit_title{
@@ -22,12 +29,17 @@ margin-bottom: 30px;
 	margin-bottom: 10px;
 }
 
-.edit_update, .edit_delete{
+.edit_update{
 	margin-top: 15px;
 	@include button_general;
 	margin-bottom: 20px;
+	display: block;
 }
 
 .edit_delete{
+    margin-top: -200px;
+    margin-left: 0px;
+	@include button_general;
+	margin-bottom: 20px;
     background-color: $danger_color;
 }
