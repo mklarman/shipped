@@ -42,8 +42,8 @@ body {
   display: block;
   top: 0;
   left: 0;
-  background-color: $bright_color;
-  background-color: rgba($bright_color, 0.9);
+  background-color: $dark_color;
+  background-color: rgba($dark_color, 0.9);
   z-index: 100;
   // border-bottom: $quiet_color solid 1px;
 }
@@ -69,10 +69,11 @@ body {
 
 .nav__links {
   @include our_general_text;
+  color: $bright_color;
   margin: 0.1vmax;
   margin-right: 1vmax;
-  margin-left: 0.5vmax;
-  padding: 0.1vmax;
+  margin-left: 1vmax;
+  padding: 0.2vmax;
 }
 
 .nav__links:active {

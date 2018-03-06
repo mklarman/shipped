@@ -1,12 +1,10 @@
-// * {
-//   border: 1px red solid;
-// }
+
 
 .main__users {
   width: 98vw;
   text-align: center;
   position: relative;
-  // margin: 1vw;
+  margin: 0.5vw auto;
 }
 
 .main__users__spacer_small {
@@ -59,33 +57,49 @@
 }
 
 .main__users__boats__form {
-  width: 100%;
-  text-align: center;
+  display: inline-block;
+  position: relative;
+
+  width: auto;
+  text-align: left;
+  background-color: rgba($quiet_color, 0.2);
+  padding: 1vmax;
+  border-radius: 1vmax;
+  margin: 1vmax;
 }
 
 .main__users__boats__form_left {
-  width: 29%;
+  @include our_general_text;
+  width: 8vmax;
   display: inline-block;
   position: relative;
-  height: 2vmax;
+  height: 2.2vmax;
   text-align: right;
+  // border: 1px solid purple;
+  vertical-align: top;
+  margin-top: 1vmax;
 }
 
 .main__users__boats__form_right {
-  width: 69%;
+  width: 23vmax;
   display: inline-block;
   position: relative;
-  background-color: purple 1px solid;
-  height: 2vmax;
+  // background-color: purple;
+  height: 2.2vmax;
   text-align: left;
+  margin-top: 0.5vmax;
 }
 
 .main__users__boats__all__txt {
   @include regular_textfield;
+  // height: 2vmax;
 }
 
 .main__users__boats__submit {
   @include button_general;
+  display: block;
+  margin: 0.5vmax auto;
+  // right: 1vmax;
 }
 
 .main__users__boats__all__upload {
@@ -98,8 +112,8 @@
   // display: block;
   // font-size: 999px;
   // filter: alpha(opacity=0);
-  min-height: 100%;
-  min-width: 100%;
+  // min-height: 100%;
+  // min-width: 100%;
   opacity: 0;
   position: absolute;
   right: 0;
@@ -107,10 +121,8 @@
   top: 0;
 }
 
-/* Example stylistic flourishes */
-
 .main__users__boats__all__upload {
-  @include button_general;
+  @include button_general(1.5vmax);
   background-color: $quiet_color;
 }
 
@@ -133,4 +145,8 @@
 
 // .main__users__boats__form_right__item {
 //   text-align: left;
+// }
+
+// * {
+//   border: 1px red solid;
 // }

@@ -5,7 +5,7 @@
     <div class="main__users__boats">
       <!-- show boats and create boat button and jobs  -->
       <div class="main__users__title">
-        Boats
+        Ships
       </div>
 
       <div class="main__users__spacer_small">
@@ -22,20 +22,21 @@
           <%= form_for Boat.new, :html => {:class => 'main__users__boats__form'} do |f| %>
             <!-- <div class="main__users__boats__form_left"> -->
               <div class="main__users__boats__form_left">
-                Name:
+                Ship name:
               </div>
               <div class="main__users__boats__form_right">
                   <%= f.text_field :name, class: "main__users__boats__all__txt" %>
               </div>
-
+              <br>
 
               <div class="main__users__boats__form_left">
                 Capacity:
               </div>
 
               <div class="main__users__boats__form_right">
-                <%= f.text_field :capacity, class: "main__users__boats__all__txt" %>
+                <%= f.number_field :capacity, class: "main__users__boats__all__txt" %>
               </div>
+              <br>
 
               <div class="main__users__boats__form_left">
                 Location:
@@ -44,14 +45,15 @@
               <div class="main__users__boats__form_right">
                 <%= f.text_field :location, class: "main__users__boats__all__txt" %>
               </div>
+              <br>
 
               <div class="main__users__boats__form_left">
-                Selfie:
+                Image:
               </div>
 
               <div class="main__users__boats__form_right">
                 <label class="main__users__boats__all__upload">
-                  Upload file
+                  upload...
                   <%= f.file_field :avatar, class: "main__users__boats__all__upload_field" %>
                 </label>
               </div>
@@ -61,7 +63,7 @@
 
             <div>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit class: "main__users__boats__submit" %>
+              <%= f.submit class: "main__users__boats__submit", value: "Add a new ship" %>
             </div>
           <% end %>
         <% end %>
@@ -131,3 +133,7 @@
     This account doesn't exist
   <% end %>
 </div>
+
+
+
+<script src="/assets/users_show.js"></script>
