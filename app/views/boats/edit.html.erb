@@ -1,13 +1,15 @@
 <h1>Edit A Boat</h1>
 
-  <%=form_for @boat do |b|%>
-     <div><%=b.text_area :name %></div>
-     <div><%=b.text_field :capacity%></div>
-     <div><%=b.text_field :location%></div>
-     
-     <div><%= b.submit'Update'%>
-  <%end%>
+<%= form_for @boat do |f| %>
+Name<%=f.text_field :name %>
+Capacity<%=f.text_field :capacity %>
+Location<%=f.text_field :location %>
+	<div><%=f.label :image %></div>
+		<div><%=f.file_field :image, class:'form_control' %></div>
+<%= f.submit %>
+<% end %>
 
-  <%= form_tag(boat_path, method: "delete") do %>
-      <%= submit_tag("Delete Boat") %>
+<%= form_tag(job_path, method: "delete") do %>
+      <%= submit_tag("Delete Boat", class: 'boat_delete_button') %>
   <% end %>
+
