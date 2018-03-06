@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   post '/assign', to: "boats#assign"
-  resources :users
+  resources :users, :only => [:show]
   resources :boats
   resources :jobs
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root :to => "devise/sessions#new"
     end
   end
 

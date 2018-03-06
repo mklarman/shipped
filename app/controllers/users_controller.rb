@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!, only: [:create]
+  
   def show
     unless user_signed_in?
       redirect_to root_path
@@ -24,7 +25,10 @@ class UsersController < ApplicationController
         end
       end
       @page_user_jobs = @page_user_jobs.uniq
+    else
+        # redirect_to root_path
     end
+
   end
 
 end

@@ -9,64 +9,81 @@ class BoatsController < ApplicationController
 
 	def create
 		boat = Boat.new(boat_params)
-		if boat.save
-			redirect_to "/boats"
-		else
-			redirect_to new_boat_path
+    if boat.save
+      flash[:message] = 'New ship added'
+			redirect_back(fallback_location: root_path)
+    else
+      flash[:message] = 'New ship not added'
+			redirect_back(fallback_location: root_path)
 		end	
 	end
 
 	def show
-		@boat = Boat.find(params[:id])
+		@boat = Boat.find_by_id(params[:id])
 		@jobs = Job.all
-	  @boat = Boat.find_by_id(params[:id])
+
+	  # @boat = Boat.find_by_id(params[:id])
 
 	end
 	
 	def edit
-		@boat = Boat.find(params[:id])
+		@boat = Boat.find_by_id(params[:id])
 		
 	end
 
 	def update
 		@boat = Boat.find_by_id(params[:id])
-		if boat.update(boat_params)
-        	redirect_to "/boats/#{boat.id}"
-        else
-        	render "/boats/#{boat.id}"
-        end
-	end	
+
+		@boat = Boat.update
+	end
 
 	def destroy
-<<<<<<< HEAD
-		@boat = Boat.find_by_id(params[:id])
-		@boat.destroy
-		redirect_to '/boats'
+		this_boat = Boat.find_by_id(params[:id])
+    this_boat.destroy
+    flash[:message] = 'Ship erased'
+		redirect_to root_path
+
+# 		if boat.update(boat_params)
+#         	redirect_to "/boats/#{boat.id}"
+#         else
+#         	render "/boats/#{boat.id}"
+#         end
+# 	end	
+
+# 	def destroy
+
+# 		@boat = Boat.find_by_id(params[:id])
+# 		@boat.destroy
+# 		redirect_to '/boats'
+
 	end
-=======
-		boat = Boat.find_by_id(params[:id])
-        bob.destroy
-        redirect_to '/boats'
-    end
->>>>>>> eea1bd7379ec22d728a3336043b8270556f4e89c
+
+# 		boat = Boat.find_by_id(params[:id])
+#         bob.destroy
+#         redirect_to '/boats'
+#     end
 
 
-    def assign
-    	@job = Job.find(params[:id])
-		@boat = Boat.find(params[:boat_id])
-		if @job.boats.find_by_id(@boat.id)
-            flash[:message] = 'this boat has been assigned'
-            redirect_to "/jobs/#{@job.id}"
-		else
-			@job.boats << @boat
-			redirect_to "/jobs/#{@job.id}"
-		end	
+
+  def assign
+    @job = Job.find_by_id(params[:id])
+    @boat = Boat.find_by_id(params[:boat_id])
+    if @job.boats.find_by_id(@boat.id)
+      flash[:message] = 'This ship already assigned'
+      # redirect_to "/jobs/#{@job.id}"
+      redirect_back(fallback_location: root_path)
+    else
+      @job.boats << @boat
+      flash[:message] = 'This ship is now assigned'
+      # redirect_to "/jobs/#{@job.id}"
+      redirect_back(fallback_location: root_path)
     end	
+  end	
 
  private
 
- def boat_params
- 	params.require(:boat).permit(:name, :capacity, :location, :avatar, :user_id)
- end
+  def boat_params
+    params.require(:boat).permit(:name, :capacity, :location, :avatar, :user_id)
+  end
 end
 

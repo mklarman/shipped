@@ -19,7 +19,7 @@
       
         <div class="nav_left">
           <% if (user_signed_in?) %>
-          <a href="/users/<%= current_user.id.to_s %>" class="nav__dashboard nav__links">
+          <a href="/" class="nav__dashboard nav__links">
             Dashboard
           </a>
       
@@ -34,17 +34,15 @@
 
         <div class="nav_right">
           <% if (user_signed_in?) %>
-            <a href="/sessions/edit" class="nav__edit nav__links">
+            <a href="/users/edit" class="nav__edit nav__links">
               Account
             </a>
             
             <!-- https://stackoverflow.com/questions/5697512/adding-a-class-to-a-link-to-is-breaking-the-link -->
-            <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "nav__links"%>
-
+            <%# link_to "Logout", destroy_user_session_path, :method => :delete, class: "nav__links" %>
+            <%= link_to "Logout", destroy_user_session_path, class: "nav__links", method: :delete %>
           <% else %>
-          <a href="/users/edit" class="nav__edit nav__links">
-            Account
-          </a>
+
           <% end %>
 
         </div>
@@ -55,7 +53,7 @@
     <% end %>
 
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
+      <div class="alert"><%= value %></div>
     <% end %>
 
     <div class="main">
