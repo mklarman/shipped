@@ -68,7 +68,7 @@
 
       <% @page_user.boats.reverse.each do |ea_boat| %>        
         
-        <a href="/boats/<%= ea_boat.id %>" class="main__users__boats__item" data-boatid="<%= ea_boat.id %>">
+        <a href="/boats/<%= ea_boat.id %>/edit" class="main__users__boats__item" data-boatid="<%= ea_boat.id %>">
           <% if (!!ea_boat.avatar_file_name) %>
             <%= image_tag ea_boat.avatar.url(:medium), :class => "main__users__boats__item_image" %>
           <% else %>
