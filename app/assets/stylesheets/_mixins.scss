@@ -22,7 +22,6 @@ $bright_color: white;
 @mixin our_general_text ($my_size: 1.5vmax) {
   display: inline-block;
   position: relative;
-
   text-decoration: none;
   font-family: main_font;
   font-size: $my_size;
@@ -40,20 +39,18 @@ $bright_color: white;
 @mixin regular_textfield ($my_size: 1.5vmax) {
   display: inline-block;
   position: relative;
-
   font-family: main_font;
   font-size: $my_size;
   line-height: $my_size;
   text-align: center;
   color: $dark_color;
-  background: none;
-  
+  background: none; 
   border: none;
   border-bottom: 0.1vmax solid $dark_color;
   outline-width: 0;  
 }
 
-@mixin light_text ($my_size: 1.3vmax) {
+@mixin light_text ($my_size: 1.2vmax) {
   display: inline-block;
   position: relative;
 
@@ -74,12 +71,38 @@ $bright_color: white;
   display: inline-block;
   position: relative;
 
+  text-decoration: none;
   font-family: main_font;
   font-size: $my_size;
   line-height: $my_size;  
   color: $bright_color;
 
   padding: $my_size/6 $my_size/1.8;
+  background: none;
+  background-color: $dark_color;
+
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: none;
+  outline-width: 0;
+}
+
+@mixin button_add ($my_size: 3vmax){
+  display: inline-block;
+  position: relative;
+
+  height: $my_size;
+  width: $my_size;
+  border-radius: $my_size;
+
+  text-decoration: none;
+  font-family: main_font;
+  font-size: $my_size;
+  line-height: $my_size*0.85;  
+  color: $bright_color;
+
+  // padding: $my_size/6 $my_size/1.8;
   background: none;
   background-color: $dark_color;
 

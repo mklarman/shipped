@@ -1,9 +1,21 @@
 class UsersController < ApplicationController
 
   def show
-    @page_user = User.find_by_id(params[:id])
+    unless user_signed_in?
+      redirect_to root_path
+    end
+    
+    # if show doesn't have ID, try to load id from current_user
+    if params[:id].nil? 
+      @page_user = current_user
+    else
+      @page_user = User.find_by_id(params[:id])
+    end
+    
+    
 
     # If user for page exists, show his boats    
+
     if (!!@page_user)
       @page_user_jobs = []
       @page_user.boats.each do |ea_boat|

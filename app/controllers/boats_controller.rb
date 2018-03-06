@@ -17,8 +17,10 @@ class BoatsController < ApplicationController
 	end
 
 	def show
+		@boat = Boat.find(params[:id])
+		@jobs = Job.all
 	  @boat = Boat.find_by_id(params[:id])
-	  
+
 	end
 	
 	def edit

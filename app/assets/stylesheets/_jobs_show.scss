@@ -1,0 +1,104 @@
+#jobshow_wrapper{
+	width:100%;
+	height:auto;
+	font-family: main_font;
+}
+
+.jobshow_column{
+	width: 30%;
+	margin-left:180px;
+	margin-top:50px;
+	float: left;
+}
+
+#job_edit_form{
+	display:none;
+}
+
+#boat_photo{
+	width:100px;
+	height:100px;
+}
+
+#jobshow_title{
+	@include page_title;
+	margin-bottom: 20px;
+}
+
+.jobshow_info{
+  position: relative;
+  text-decoration: none;
+  font-family: main_font;
+  font-size: 1.5vmax;
+  line-height: 1.5vmax;
+  color: rgb(40, 50, 50);
+  background: none;
+  border: none;
+  user-select: none;
+  box-shadow: none;
+  outline-width: 0;
+  margin-bottom:5px;
+}
+
+
+.job_update_button, .job_delete_button{
+	@include button_general;
+	margin-left:5px;
+	float: left;
+	display: inline-block;
+}
+
+.job_delete_button{
+	background-color:$danger_color;
+}
+
+.boat_assign_button{
+	@include button_general;
+}
+
+.jobshow_field{
+	
+  width:100%;	
+  position: relative;
+  font-family: main_font;
+  font-size: 1.5vmax;
+  line-height: 1.5vmax;
+  text-align: center;
+  color: rgb(40, 50, 50);
+  background: none; 
+  border: none;
+  border-bottom: 0.1vmax solid rgb(40, 50, 50);
+  outline-width: 0; 
+  margin-bottom:5px;
+}
+
+.jobshow_boats_assigned, .jobshow_boats_listed{
+	margin-left:10px;
+	text-align:center;
+	width:100px;
+	margin-top:20px;
+	display:inline-block;
+	margin-bottom: 50px;
+	// float:left;
+}
+
+#edit_gear{
+	margin-bottom:30px;
+}
+
+#edit_gear:active{
+@include button_general_pressed 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
