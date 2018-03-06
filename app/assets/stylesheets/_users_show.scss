@@ -218,6 +218,7 @@
   @include button_general;
   background-color: $quiet_color;
   margin-top: 0.5vmax;
+  margin-left: 1vmax;
 }
 
 .main__users__boats__item_confirm {
@@ -230,6 +231,7 @@
   @include button_general;
   background-color: $quiet_color;
   margin-top: 0.5vmax;
+  margin-right: 1vmax;
 }
 
 .main__users__boats__item_delete:active,

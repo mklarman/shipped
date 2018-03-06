@@ -2,12 +2,16 @@
   <h2>List Of Available Jobs</h2>
 </div>
 
-<% Job.all.each do |eJob| %>
+<% Job.all.reverse.each do |eJob| %>
   <div id='jobsList'>
- 	 <a href="/jobs/<%= eJob.id %>">
-       <div id='jobDescrip'><%= eJob.description %></div>
-       <div id='jobID'>Job ID: 00000<%= eJob.id %></div>
-   </a>
+    <a href="/jobs/<%= eJob.id %>">
+        <div id='jobDescrip'>
+          <%= eJob.description %>
+        </div>
+        <div id='jobID'>
+          Job ID: 00000<%= eJob.id %>
+        </div>
+    </a>
   </div>
 <% end %>
 

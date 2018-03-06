@@ -36,21 +36,25 @@ class BoatsController < ApplicationController
 
 	def destroy
 		this_boat = Boat.find_by_id(params[:id])
-		this_boat.destroy
+    this_boat.destroy
+    flash[:message] = 'Ship erased'
 		redirect_to root_path
 	end
 
 
   def assign
-    @job = Job.find(params[:id])
-  @boat = Boat.find(params[:boat_id])
-  if @job.boats.find_by_id(@boat.id)
-          flash[:message] = 'this boat has been assigned'
-          redirect_to "/jobs/#{@job.id}"
-  else
-    @job.boats << @boat
-    redirect_to "/jobs/#{@job.id}"
-  end	
+    @job = Job.find_by_id(params[:id])
+    @boat = Boat.find_by_id(params[:boat_id])
+    if @job.boats.find_by_id(@boat.id)
+      flash[:message] = 'This ship already assigned'
+      # redirect_to "/jobs/#{@job.id}"
+      redirect_back(fallback_location: root_path)
+    else
+      @job.boats << @boat
+      flash[:message] = 'This ship is now assigned'
+      # redirect_to "/jobs/#{@job.id}"
+      redirect_back(fallback_location: root_path)
+    end	
   end	
 
  private
