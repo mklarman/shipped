@@ -1,16 +1,12 @@
 <div id='edit_wrapper'>
   <div id='edit_form'>
-
     <div id='edit_title'>Edit User Account</div>
-
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
-
       <div class="field">
         <%= f.label :email, class: 'small_label' %><br>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'edit_field' %>
       </div>
-
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
@@ -23,11 +19,10 @@
         <br>
         <%= f.password_field :password, autocomplete: "off", class: 'edit_field' %>
         <% if @minimum_password_length %>
-        <br>
+          <br>
           <i class="small_label">
-            <%= @minimum_password_length %> characters minimum
+          <%= @minimum_password_length %> characters minimum
           </i>
-
         <% end %>
       </div>
       <br>
@@ -53,6 +48,5 @@
     <br>
     <br>
     <div id='edit_title'></div>
-
   </div>
 </div>
