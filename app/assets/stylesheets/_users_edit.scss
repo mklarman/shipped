@@ -1,45 +1,54 @@
 #edit_wrapper{
-	position:absolute;
-    width:100%;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width:100%;
 	height: 100vh;   
 	font-family: main_font;
 	background-image: url(../../assets/signup.jpg);
-    background-size: cover;
-    overflow: hidden;
-
+  background-size: cover;
+  overflow: hidden;
+  line-height: 1.8vmax;
 }
 
 #edit_form{
 	background-color: rgba(225,225,225, 0.7);
-	width:20%;
-	margin: 100px auto;
-	padding: 4%;
-	border-radius: 2px;
-	height: 400px;
-
+	height: auto;
+	width:40%;
+  margin: 0 auto;
+  margin-top: 6vmax;
+	padding: 2%;
+	border-radius: 0.1vmax;
 }
 
 #edit_title{
 	@include page_title;
-margin-bottom: 30px;
+	margin-top: 0.1vmax;
+  margin-bottom: 1vmax;
 }
 
 .edit_field{
 	@include regular_textfield;
-	margin-bottom: 10px;
+	margin-bottom: 0.1vmax;
 }
 
 .edit_update{
-	margin-top: 15px;
+	margin-top: 1vmax;
 	@include button_general;
-	margin-bottom: 20px;
+	margin-bottom: 0.2vmax;
 	display: block;
 }
 
 .edit_delete{
-    margin-top: -200px;
-    margin-left: 0px;
-	@include button_general;
-	margin-bottom: 20px;
-    background-color: $danger_color;
+  @include button_general;
+  margin-top: 1vmax;
+  margin-left: 0;	
+	margin-bottom: 0.2vmax;
+  background-color: $danger_color;
+}
+
+.small_label {
+  @include light_text;
+  color: $dark_color;
+  
 }

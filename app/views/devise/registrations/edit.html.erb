@@ -1,48 +1,52 @@
 <div id='edit_wrapper'>
   <div id='edit_form'>
+    <div id='edit_title'>Edit User Account</div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :email, class: 'small_label' %><br>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'edit_field' %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-<div id='edit_title'>Edit <%= resource_name.to_s.humanize %></div>
+      <div class="field">
+        <%= f.label :password, class: 'small_label' %>
+        <i class="small_label">
+          (leave blank if you don't want to change it)
+        </i>
+        <br>
+        <%= f.password_field :password, autocomplete: "off", class: 'edit_field' %>
+        <% if @minimum_password_length %>
+          <br>
+          <i class="small_label">
+          <%= @minimum_password_length %> characters minimum
+          </i>
+        <% end %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'small_label' %><br>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'edit_field' %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :current_password, class: 'small_label' %>
+        <i class="small_label">
+          (we need your current password to confirm your changes)
+        </i>
+        <br>
+        <%= f.password_field :current_password, autocomplete: "off", class: 'edit_field' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'edit_field' %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'edit_field' %>
-    <% if @minimum_password_length %>
-    <br>
-      <em><%= @minimum_password_length %> characters minimum</em>
-
+      <div class="actions">
+        <%= f.submit "Update", class: 'edit_update' %>
+        <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'edit_delete'%></div>
+      </div>
     <% end %>
+    <br>
+    <br>
+    <div id='edit_title'></div>
   </div>
-  <br>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'edit_field' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off", class: 'edit_field' %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update", class: 'edit_update' %>
-    <div><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'edit_delete'%></div>
-  </div>
-<% end %>
-<br>
-<br>
-<div id='edit_title'></div>
-
-</div>
 </div>

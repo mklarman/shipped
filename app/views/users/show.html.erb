@@ -131,7 +131,7 @@
               
               from: <%= ea_job.origin %> / 
               to: <%= ea_job.destination %> / 
-              cost: $<%= ea_job.cost %>  
+              cost: $<%= number_with_precision(ea_job.cost, precision: 2) %>  
             </div>
           </div>
         </a>

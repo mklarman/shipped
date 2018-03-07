@@ -1,89 +1,132 @@
 <div id='jobshow_wrapper'>
-  <div class='jobshow_column'>
-<% if @job != nil%>
-  <div id='jobshow_title' >Job Info</div>
-  <div class='jobshow_info'>Description: <%=@job.description%></div> 
-  <div class='jobshow_info'>Origin: <%=@job.origin%></div> 
-  <div class='jobshow_info'>Destination: <%=@job.destination%></div> 
-  <div class='jobshow_info'>Cost: $<%=@job.cost%></div> 
-  <div class='jobshow_info'>Containers: <%=@job.containers%></div> 
-  <hr>
-
-  <div id='edit_gear'><img src="../../assets/setting.png" width='25px' height='25px' align="right"></div>
-  <div id='job_edit_form'>
-  <%=form_for @job do |j|%>
-  <h2>Update Job</h2>
-     <div class='jobshow_info'>Description: </div>
-     <div ><%=j.text_area :description, class: 'jobshow_field' %></div>
-     <div class='jobshow_info'>Origin: </div>
-     <div><%=j.text_field :origin, class: 'jobshow_field'%></div>
-     <div class='jobshow_info'>Destination: </div>
-     <div ><%=j.text_field :destination, class: 'jobshow_field'%></div>
-     <div><%=j.text_field :cost, class: 'jobshow_field' %></div>
-     <div ><%=j.text_field :containers, class: 'jobshow_field'%></div>
-     <div><%= j.submit'update', class: 'job_update_button'%></div>
-  <%end%>
-
-  <%= form_tag(job_path, method: "delete") do %>
-      <%= submit_tag("Delete Job", class: 'job_delete_button') %>
-  <% end %>
-</div>
-</div>
-
-
-<div class='jobshow_column'>
-  <div id='jobshow_title'>This job has been assigned to:</div>
-<% @job.boats.each do |b| %>
-<div class='jobshow_boats_assigned'>
-  <% if b.avatar_file_name %>
-   <div><%= image_tag b.avatar.url(:medium), :class => 'boat_photo' %></div>
-  <%else%>
-   <div class= 'boat_photo'></div> 
-  <%end%> 
-   <div><%= b.name %></div>
-   <div><%= b.location %></div>
- </div>
-<% end %>
-
-<hr>
-<div id='jobshow_title'>Assign a Boat to this Job: </div>
-
- 
-<%if @job.boats == Boat.all %>
-  <h2>There is no current available boats</h2>
-<%else%>
-
-  <% @boats.each do |boat| %> 
-   
-    <%if @job.boats.find_by_id(boat.id)%>
-    <%else%>
-    <div class='jobshow_boats_listed'>           
-      <% if boat.avatar_file_name %> 
-        <div><a href="/boats/<%=boat.id%>"><%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%></a></div>
-      <% else %>
-        <!-- <div class= 'boat_photo'></div>  -->
-      <% end %> 
-      <div><%=boat.name%></div>    
-      <%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
-        <%= hidden_field_tag "id",  @job.id %>
-        <%= hidden_field_tag "boat_id", boat.id %>
-        <div><%= r.submit 'assign', class: 'boat_assign_button' %></div>
+    <% if @job != nil%>
+      <div class='jobshow_column'>
+        <div id='jobshow_title' >Job Info</div>
+        <div class='jobshow_info'>Description: <%=@job.description%></div>
+        <br>
+        <div class='jobshow_info'>Origin: <%=@job.origin%></div>
+        <div class='jobshow_info'>Destination: <%=@job.destination%></div> 
+        <div class='jobshow_info'>Cost: $<%=@job.cost%></div> 
+        <div class='jobshow_info'>Containers: <%=@job.containers%></div> 
+        <hr>
+        <div id='edit_gear'>
+          <img src="../../assets/setting.png" width='25px' height='25px' align="right">
         </div>
-        <%end%>
-      
-    <% end %>
-    <%end%> 
-<%end%>   
+        <div id='job_edit_form'>
+          <%=form_for @job do |j|%>
+            <div class="main__jobs_i__title" style="margin-bottom:1vmax; margin-left: 1vmax;">Update Job</div>
+            <div class='jobshow_info'>Description: </div>
+            <div><%=j.text_area :description, class: 'jobshow_field' %></div>
+            
+            <div class='jobshow_info'>Origin: </div>
+            <div><%=j.text_field :origin, class: 'jobshow_field'%></div>
+            <div class='jobshow_info'>Destination: </div>
+            <div ><%=j.text_field :destination, class: 'jobshow_field'%></div>
+            <div class='jobshow_info'>Cost: </div>
+            <div><%=j.text_field :cost, class: 'jobshow_field' %></div>
+            <div class='jobshow_info'>Containers: </div>
+            <div ><%=j.text_field :containers, class: 'jobshow_field'%></div>
+            <div><%= j.submit 'Update', class: 'job_update_button'%></div>
+          <%end%>
+  
+          <%= form_tag(job_path, method: "delete") do %>
+              <%= submit_tag("Delete job", class: 'job_delete_button') %>
+          <% end %>
+        </div>
+      </div>
+  
+  
+      <div class='jobshow_column'>
+        <div id='jobshow_title'>
+          This job has been assigned to:
+        </div>
+        <% if (@job.boats.length != 0) %>
+          <% @job.boats.each do |b| %>
+            <div class='jobshow_boats_assigned'>
+            <% if b.avatar_file_name %>
+              <div><%= image_tag b.avatar.url(:medium), :class => 'boat_photo' %></div>
+            <%else%>
+              <div class= 'boat_photo'></div> 
+            <%end%> 
+            <div><%= b.name %></div>
+            <div><%= b.location %></div>
+            <%= form_for :boat, url: {action: 'unassign', controller: 'boats'} do |r| %>
+                  <%= hidden_field_tag "id",  @job.id %>
+                  <%= hidden_field_tag "boat_id", b.id %>
+                  <div><%= r.submit 'Unassign', class: 'boat_temp_button' %></div>
+            <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="jobshow_boats_infotext">
+            No ships assigned
+          </div>
+        <% end %>
+  
+        <hr>
+  
+        <div id='jobshow_title'>
+          Assign a Boat to this Job:
+        </div>
+  
+    
+        <%if @job.boats.length == Boat.all.length %>
+          <h2>There is no current available boats</h2>
+        <%else%>
+          <!-- there are boats still left to assign -->
+          <% @boats.each do |boat| %> 
+            <%if @job.boats.find_by_id(boat.id)%>
+            <%else%>
+              <div class='jobshow_boats_listed'>
+                <a href="/boats/<%=boat.id%>/edit">
+                  <% if boat.avatar_file_name %> 
+                    
+                      <div>
+                        <%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%>
+                      </div>
+                    
+                  <% else %>
+                    <div class= 'boat_photo'></div> 
+                  <% end %> 
+                  <div class="jobshow_boats_assigned_name">
+                    <%=boat.name%>
+                  </div>
+                </a>
+                <%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
+                  <%= hidden_field_tag "id",  @job.id %>
+                  <%= hidden_field_tag "boat_id", boat.id %>
+                  <div>
+                    <%= r.submit 'Assign', class: 'boat_assign_button' %>
+                  </div>
+                <%end%>
+              </div>
+            <% end %>
+          <%end%> 
+        <%end%>      
+      </div>
+    <% else %>
+      <h2>Opps, we don't have this job anymore!</h2>
+    <%end%>
+    <script type="text/javascript" src="/assets/job_show.js"></script>
+  </div>
 
-<% else %>
-
-    <h2>Opps, we don't have this job anymore!</h2>
 
 
-<%end%>
-</div>
 
-</div>
 
-<script type="text/javascript" src="/assets/job_show.js"></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -83,6 +83,7 @@
   margin: 0.5vmax 0;
 
   width: 50%;
+  overflow-wrap: break-word;
 }
 
 .main__users__jobs__item_info {
@@ -99,6 +100,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  overflow-wrap: break-word;
 }
 
 .main__users__boats__item_detail,
