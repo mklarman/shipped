@@ -1,7 +1,18 @@
+<!-- 
+By Doris Lin 
+For "jobs#show" action
+-->
+
 <div id='jobshow_wrapper'>
+    <!-- 
+      check if the job is in the database,
+      if the job is in the database:
+      (@job is passed from job controller)
+    -->
     <% if @job != nil%>
       <div class='jobshow_column'>
         <div id='jobshow_title' >Job Info</div>
+        <!-- display all job info -->
         <div class='jobshow_info'>Description: <%=@job.description%></div>
         <br>
         <div class='jobshow_info'>Origin: <%=@job.origin%></div>
@@ -12,12 +23,14 @@
         <div id='edit_gear'>
           <img src="../../assets/setting.png" width='25px' height='25px' align="right">
         </div>
+
+        <!-- the hidden job editing form -->
         <div id='job_edit_form'>
+          <!-- job update form -->
           <%=form_for @job do |j|%>
             <div class="main__jobs_i__title" style="margin-bottom:1vmax; margin-left: 1vmax;">Update Job</div>
             <div class='jobshow_info'>Description: </div>
-            <div><%=j.text_area :description, class: 'jobshow_field' %></div>
-            
+            <div><%=j.text_area :description, class: 'jobshow_field' %></div>            
             <div class='jobshow_info'>Origin: </div>
             <div><%=j.text_field :origin, class: 'jobshow_field'%></div>
             <div class='jobshow_info'>Destination: </div>
@@ -28,7 +41,7 @@
             <div ><%=j.text_field :containers, class: 'jobshow_field'%></div>
             <div><%= j.submit 'Update', class: 'job_update_button'%></div>
           <%end%>
-  
+          <!-- job deleting form -->
           <%= form_tag(job_path, method: "delete") do %>
               <%= submit_tag("Delete job", class: 'job_delete_button') %>
           <% end %>
@@ -37,26 +50,41 @@
   
   
       <div class='jobshow_column'>
+        <!-- Display all boats assigned to the job  -->
         <div id='jobshow_title'>
           This job has been assigned to:
         </div>
+        <!-- check if there is any boats has been assigned to this job,
+          if there are boats being assigned:
+          (@job is passed from job controller)
+        -->
         <% if (@job.boats.length != 0) %>
+          <!-- Iterate all boats assigned to the job
+            (@job is passed from job controller)
+          -->
           <% @job.boats.each do |b| %>
             <div class='jobshow_boats_assigned'>
-            <% if b.avatar_file_name %>
-              <div><%= image_tag b.avatar.url(:medium), :class => 'boat_photo' %></div>
-            <%else%>
-              <div class= 'boat_photo'></div> 
-            <%end%> 
-            <div><%= b.name %></div>
-            <div><%= b.location %></div>
-            <%= form_for :boat, url: {action: 'unassign', controller: 'boats'} do |r| %>
-                  <%= hidden_field_tag "id",  @job.id %>
-                  <%= hidden_field_tag "boat_id", b.id %>
-                  <div><%= r.submit 'Unassign', class: 'boat_temp_button' %></div>
-            <% end %>
+            <!-- display the boat image (the if statement is to avoid missing.png from devise) -->
+              <% if b.avatar_file_name %>
+                <div><%= image_tag b.avatar.url(:medium), :class => 'boat_photo' %></div>
+              <%else%>
+                <div class= 'boat_photo'></div> 
+              <%end%>
+              <!-- display the other boat info --> 
+              <div><%= b.name %></div>
+              <div><%= b.location %></div>
+
+              <!-- the unassign botton function -->
+              <%= form_for :boat, url: {action: 'unassign', controller: 'boats'} do |r| %>
+                <%= hidden_field_tag "id",  @job.id %>
+                <%= hidden_field_tag "boat_id", b.id %>
+                <div><%= r.submit 'Unassign', class: 'boat_temp_button' %></div>
+              <% end %>
             </div>
           <% end %>
+        <!-- check if there is any boats has been assigned to this job,
+          if there are no boats being assigned:
+        -->  
         <% else %>
           <div class="jobshow_boats_infotext">
             No ships assigned
@@ -64,34 +92,50 @@
         <% end %>
   
         <hr>
-  
+
+        <!-- Display all boats available  -->
         <div id='jobshow_title'>
           Assign a Boat to this Job:
         </div>
-  
-    
+        <!-- check if there are any boats available,
+          if no boats available :
+          (@job is passed from job controller)
+        -->
         <%if @job.boats.length == Boat.all.length %>
           <h2>There is no current available boats</h2>
+        <!-- check if there are any boats available,
+          if ther are still boats available :
+        -->  
         <%else%>
-          <!-- there are boats still left to assign -->
-          <% @boats.each do |boat| %> 
+          <!-- Iterate all boats(@boats is passed from job controller) -->
+          <% @boats.each do |boat| %>
+            <!-- 
+              check if this boat has been assgined to the job,
+              if the boat has been assgined to the job
+              (@job is passed from job controller) 
+            -->  
             <%if @job.boats.find_by_id(boat.id)%>
+            <!-- 
+              check if this boat has been assgined to the job,
+              if the boat has NOT been assgined to the job
+            --> 
             <%else%>
               <div class='jobshow_boats_listed'>
                 <a href="/boats/<%=boat.id%>/edit">
-                  <% if boat.avatar_file_name %> 
-                    
-                      <div>
-                        <%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%>
-                      </div>
-                    
+                  <!-- display the boat image (the if statement is to avoid missing.png from devise) -->
+                  <% if boat.avatar_file_name %>                     
+                    <div>
+                      <%= image_tag boat.avatar.url(:medium), :class => 'boat_photo'%>
+                    </div>                    
                   <% else %>
                     <div class= 'boat_photo'></div> 
                   <% end %> 
+                  <!-- display the other boat info --> 
                   <div class="jobshow_boats_assigned_name">
                     <%=boat.name%>
                   </div>
                 </a>
+                <!-- the assign botton function -->
                 <%= form_for :boat, url: {action: 'assign', controller: 'boats'} do |r| %>
                   <%= hidden_field_tag "id",  @job.id %>
                   <%= hidden_field_tag "boat_id", boat.id %>
@@ -104,6 +148,10 @@
           <%end%> 
         <%end%>      
       </div>
+    <!-- 
+      check if the job is in the database,
+      if the job is NOT in the database:
+    -->     
     <% else %>
       <h2>Opps, we don't have this job anymore!</h2>
     <%end%>
